@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ThermometerSnowflake, ShieldCheck, Wrench } from 'lucide-react';
-import heroTruckImage from '../assets/images/img.png';
+import heroTruckImage from './../../assets/images/img.png';
 
 interface HeroSectionProps {
     onOpenInquire: () => void;
