@@ -1,15 +1,15 @@
 import React from 'react';
 import { ShieldCheck, Timer, HeartHandshake, Eye } from 'lucide-react';
-import { ENGAGEMENTS_DATA, TRANSPARENCE_DATA } from '../data/content';
+import { TRANSPARENCE_DATA } from '../data/content';
 
 export const EngagementsSection: React.FC = () => {
   return (
-    <section className="py-24 lg:py-32 bg-[#faf9fc] border-b border-[#e2e8f0]">
+    <section className="py-24 lg:py-32 border-b bg-[#f4f5f7] border-[#cbd5e1]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl text-[#000613] tracking-tight">
+          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl tracking-tight text-[#0f172a]">
             Nos Engagements
           </h2>
           <p className="font-mono-tech text-xs sm:text-sm tracking-[0.2em] text-[#43474e] uppercase font-bold mt-3">
@@ -19,15 +19,14 @@ export const EngagementsSection: React.FC = () => {
 
         {/* 3 Ghost Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-8">
-          
+
           {/* Card 1: Qualité Supérieure */}
           <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 sm:p-10 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between">
             <div>
-              {/* Icon Container */}
-              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] group-hover:bg-[#000613] group-hover:text-[#00e3fd] transition-colors mb-8">
+              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-8 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
                 <ShieldCheck size={24} strokeWidth={1.75} />
               </div>
-              <h3 className="font-montserrat font-bold text-xl sm:text-2xl text-[#000613] tracking-tight mb-4">
+              <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight mb-4 text-[#0f172a]">
                 Qualité Supérieure
               </h3>
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
@@ -43,10 +42,10 @@ export const EngagementsSection: React.FC = () => {
           {/* Card 2: Délais Respectés */}
           <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 sm:p-10 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] group-hover:bg-[#000613] group-hover:text-[#00e3fd] transition-colors mb-8">
+              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-8 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
                 <Timer size={24} strokeWidth={1.75} />
               </div>
-              <h3 className="font-montserrat font-bold text-xl sm:text-2xl text-[#000613] tracking-tight mb-4">
+              <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight mb-4 text-[#0f172a]">
                 Délais Respectés
               </h3>
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
@@ -62,10 +61,10 @@ export const EngagementsSection: React.FC = () => {
           {/* Card 3: Service Client */}
           <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 sm:p-10 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] group-hover:bg-[#000613] group-hover:text-[#00e3fd] transition-colors mb-8">
+              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-8 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
                 <HeartHandshake size={24} strokeWidth={1.75} />
               </div>
-              <h3 className="font-montserrat font-bold text-xl sm:text-2xl text-[#000613] tracking-tight mb-4">
+              <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight mb-4 text-[#0f172a]">
                 Service Client
               </h3>
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
@@ -81,21 +80,21 @@ export const EngagementsSection: React.FC = () => {
         </div>
 
         {/* Wide Card: Transparence Totale */}
-        <div className="relative bg-white border border-[#e2e8f0] border-t-4 border-t-[#007aff] p-8 sm:p-12 rounded-sm shadow-sm transition-all duration-300">
-          
+        <div className="relative bg-white border border-[#e2e8f0] border-t-4 border-t-[#007aff] p-8 sm:p-12 rounded-sm shadow-sm">
+
           {/* Header with Eye Icon */}
           <div className="flex items-center gap-3 mb-8">
             <div className="text-[#007aff]">
               <Eye size={22} strokeWidth={2} />
             </div>
-            <h3 className="font-montserrat font-bold text-xl sm:text-2xl text-[#000613] tracking-tight">
+            <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight text-[#000613]">
               {TRANSPARENCE_DATA.title}
             </h3>
           </div>
 
           {/* Two-Column Detail Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 pt-2">
-            
+
             {/* Column 1: Tarification */}
             <div className="space-y-2">
               <div className="font-mono-tech text-xs tracking-wider text-[#43474e] font-bold uppercase">

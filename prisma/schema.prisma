@@ -1,0 +1,108 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ProjectType {
+  BEFORE_AFTER
+  SIMPLE
+}
+
+enum ProductAvailability {
+  IN_STOCK
+  OUT_OF_STOCK
+  ON_REQUEST
+}
+
+enum MessageStatus {
+  NEW
+  READ
+  ARCHIVED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id               String   @id @default(uuid())
+  title            String
+  slug             String   @unique
+  shortDescription String
+  fullDescription  String   @db.Text
+  icon             String?
+  image            String?
+  features         Json?
+  order            Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Product {
+  id           String              @id @default(uuid())
+  name         String
+  slug         String              @unique
+  category     String
+  description  String              @db.Text
+  price        Float?
+  availability ProductAvailability @default(IN_STOCK)
+  images       Json
+  specs        Json?
+  featured     Boolean             @default(false)
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+}
+
+model Project {
+  id          String      @id @default(uuid())
+  title       String
+  slug        String      @unique
+  category    String
+  type        ProjectType @default(SIMPLE)
+  description String      @db.Text
+  client      String?
+  images      Json?
+  beforeImage String?
+  afterImage  String?
+  date        String?
+  featured    Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Message {
+  id          String        @id @default(uuid())
+  fullName    String
+  email       String
+  phone       String?
+  companyName String?
+  vehicleType String?
+  serviceType String?
+  message     String        @db.Text
+  status      MessageStatus @default(NEW)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model VisitStat {
+  id        String   @id @default(uuid())
+  page      String   @default("/")
+  ipHash    String?
+  visitedAt DateTime @default(now())
+}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Copy, Check, Send, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MapPin, Copy, Check, Send, MessageSquare, Clock } from 'lucide-react';
 import { CONTACT_DATA } from '../data/content';
+import { api } from '../services/api';
+import { COLORS } from '../constants/theme';
 
 interface ContactSectionProps {
   onOpenInquire: () => void;
@@ -8,8 +10,17 @@ interface ContactSectionProps {
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInquire }) => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [quickMessageSent, setQuickMessageSent] = useState(false);
-  const [quickMessage, setQuickMessage] = useState({ name: '', contact: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    companyName: '',
+    vehicleType: '',
+    serviceType: 'Climatisation Automobile',
+    message: '',
+  });
 
   const handleCopy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -17,56 +28,74 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInquire })
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
-  const handleQuickSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!quickMessage.name || !quickMessage.contact) return;
-    setQuickMessageSent(true);
-    setTimeout(() => {
-      setQuickMessageSent(false);
-      setQuickMessage({ name: '', contact: '', message: '' });
-    }, 4000);
+    if (!formData.fullName || !formData.email || !formData.message) return;
+
+    setSubmitting(true);
+    const res = await api.sendContactMessage(formData);
+    setSubmitting(false);
+
+    if (res.success) {
+      setFormSuccess(true);
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        companyName: '',
+        vehicleType: '',
+        serviceType: 'Climatisation Automobile',
+        message: '',
+      });
+      setTimeout(() => setFormSuccess(false), 6000);
+    }
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-[#faf9fc]">
+    <section id="contact" className="py-24 lg:py-32 bg-[#f4f5f7] text-[#0f172a] border-b border-[#e2e8f0]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        
-        {/* Section Header */}
+
+        {/* Header */}
         <div className="mb-14 sm:mb-16">
-          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl text-[#000613] tracking-tight">
-            Connect.
+          <span className="font-mono-tech text-xs tracking-widest text-[#007aff] uppercase font-bold">
+            CONTACT & DEMANDE DE DEVIS
+          </span>
+          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl tracking-tight mt-1 text-[#0f172a]">
+            Contactez <span className="text-[#007aff]">Shyk</span><span className="text-[#000]">Auto.</span>
           </h2>
-          <p className="font-mono-tech text-xs sm:text-sm tracking-[0.2em] text-[#43474e] uppercase font-bold mt-2">
-            INITIATE CONTACT
+          <p className="font-grotesk text-[#43474e] max-w-xl mt-2 text-base">
+            Notre équipe technique est à votre écoute pour toute demande d'intervention, devis personnalisé ou conseil frigorifique.
           </p>
         </div>
 
-        {/* 3 Contact Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          
+        {/* Top Cards: Phone, Email, WhatsApp */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+
           {/* Card 1: Phone */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#007aff] p-8 sm:p-10 rounded-sm transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between group">
+          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 rounded-sm shadow-sm transition-all flex flex-col justify-between group">
             <div>
-              <div className="text-[#007aff] mb-8 group-hover:scale-110 transition-transform origin-left">
-                <Phone size={24} strokeWidth={1.75} />
+              <div className="text-[#007aff] mb-6 p-3 bg-[#f4f5f7] border border-[#e2e8f0] rounded w-fit">
+                <Phone size={24} />
               </div>
-              <div className="font-mono-tech text-xs tracking-wider text-[#43474e] font-bold uppercase mb-3">
-                {CONTACT_DATA.phone.label}
+              <div className="font-mono-tech text-xs tracking-wider text-[#64748b] font-bold uppercase mb-2">
+                TÉLÉPHONE DIRECT
               </div>
               <a
                 href={CONTACT_DATA.phone.href}
-                className="font-montserrat font-bold text-xl sm:text-2xl text-[#000613] hover:text-[#007aff] transition-colors block"
+                className="font-montserrat font-bold text-2xl text-[#0f172a] hover:text-[#007aff] transition-colors block"
               >
                 {CONTACT_DATA.phone.value}
               </a>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0]/60 flex items-center justify-between">
-              <span className="font-mono-tech text-xs text-slate-400">LUN - SAM : 08H00 - 18H00</span>
+            <div className="mt-8 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
+              <span className="font-mono-tech text-xs text-[#64748b] flex items-center gap-1">
+                <Clock size={12} />
+                Lun - Sam : 08h-18h
+              </span>
               <button
                 onClick={() => handleCopy(CONTACT_DATA.phone.value, 'phone')}
-                title="Copier le numéro"
-                className="text-xs font-mono-tech text-[#007aff] hover:text-[#000613] flex items-center gap-1"
+                className="text-xs font-mono-tech text-[#007aff] flex items-center gap-1 font-bold"
               >
                 {copiedKey === 'phone' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
                 <span>{copiedKey === 'phone' ? 'Copié' : 'Copier'}</span>
@@ -75,28 +104,27 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInquire })
           </div>
 
           {/* Card 2: Email */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#007aff] p-8 sm:p-10 rounded-sm transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between group">
+          <div className="bg-white border border-[#e2e8f0] hover:border-[#007aff] p-8 rounded-sm shadow-sm transition-all flex flex-col justify-between group">
             <div>
-              <div className="text-[#007aff] mb-8 group-hover:scale-110 transition-transform origin-left">
-                <Mail size={24} strokeWidth={1.75} />
+              <div className="text-[#007aff] mb-6 p-3 bg-[#f4f5f7] border border-[#e2e8f0] rounded w-fit">
+                <Mail size={24} />
               </div>
-              <div className="font-mono-tech text-xs tracking-wider text-[#43474e] font-bold uppercase mb-3">
-                {CONTACT_DATA.email.label}
+              <div className="font-mono-tech text-xs tracking-wider text-[#64748b] font-bold uppercase mb-2">
+                COURRIEL TECHNIQUE
               </div>
               <a
                 href={CONTACT_DATA.email.href}
-                className="font-montserrat font-bold text-lg sm:text-xl text-[#000613] hover:text-[#007aff] transition-colors break-all block"
+                className="font-montserrat font-bold text-xl text-[#0f172a] hover:text-[#007aff] transition-colors block break-all"
               >
                 {CONTACT_DATA.email.value}
               </a>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0]/60 flex items-center justify-between">
-              <span className="font-mono-tech text-xs text-slate-400">RÉPONSE SOUS 2H</span>
+            <div className="mt-8 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
+              <span className="font-mono-tech text-xs text-[#64748b]">Réponse sous 2H</span>
               <button
                 onClick={() => handleCopy(CONTACT_DATA.email.value, 'email')}
-                title="Copier l'email"
-                className="text-xs font-mono-tech text-[#007aff] hover:text-[#000613] flex items-center gap-1"
+                className="text-xs font-mono-tech text-[#007aff] flex items-center gap-1 font-bold"
               >
                 {copiedKey === 'email' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
                 <span>{copiedKey === 'email' ? 'Copié' : 'Copier'}</span>
@@ -104,104 +132,208 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInquire })
             </div>
           </div>
 
-          {/* Card 3: Location */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#007aff] p-8 sm:p-10 rounded-sm transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between group">
+          {/* Card 3: WhatsApp Clickable */}
+          <div className="bg-white border border-[#e2e8f0] hover:border-emerald-500 p-8 rounded-sm shadow-sm transition-all flex flex-col justify-between group">
             <div>
-              <div className="text-[#007aff] mb-8 group-hover:scale-110 transition-transform origin-left">
-                <MapPin size={24} strokeWidth={1.75} />
+              <div className="text-emerald-600 mb-6 p-3 bg-[#f4f5f7] border border-[#e2e8f0] rounded w-fit">
+                <MessageSquare size={24} />
               </div>
-              <div className="font-mono-tech text-xs tracking-wider text-[#43474e] font-bold uppercase mb-3">
-                {CONTACT_DATA.location.label}
+              <div className="font-mono-tech text-xs tracking-wider text-[#64748b] font-bold uppercase mb-2">
+                WHATSAPP DIRECT
               </div>
-              <div className="font-montserrat font-bold text-lg sm:text-xl text-[#000613]">
-                {CONTACT_DATA.location.primary}
-              </div>
-              <div className="font-grotesk text-base text-[#43474e] mt-0.5">
-                {CONTACT_DATA.location.secondary}
-              </div>
+              <a
+                href="https://wa.me/21671000000?text=Bonjour%20ShykAuto,%20je%20souhaite%20un%20devis"
+                target="_blank"
+                rel="noreferrer"
+                className="font-montserrat font-bold text-2xl text-emerald-600 hover:underline block"
+              >
+                Discuter sur WhatsApp
+              </a>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0]/60 flex items-center justify-between">
-              <span className="font-mono-tech text-xs text-slate-400">{CONTACT_DATA.location.coordinates}</span>
-              <button
-                onClick={onOpenInquire}
-                className="text-xs font-mono-tech text-[#007aff] hover:text-[#000613] flex items-center gap-1 font-semibold"
+            <div className="mt-8 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
+              <span className="font-mono-tech text-xs text-[#64748b]">Support 7j/7</span>
+              <a
+                href="https://wa.me/21671000000"
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-mono-tech text-emerald-600 font-bold hover:underline"
               >
-                <span>Prendre RDV</span>
-                <ExternalLink size={12} />
-              </button>
+                Ouvrir WhatsApp →
+              </a>
             </div>
           </div>
 
         </div>
 
-        {/* Quick Message Dispatch Panel */}
-        <div className="mt-12 bg-white border border-[#e2e8f0] p-8 sm:p-10 rounded-sm shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-4">
-              <div className="font-mono-tech text-xs text-[#007aff] font-bold tracking-widest uppercase mb-1">
-                DISPATCH TECHNIQUE DIRECT
+        {/* Main Grid: Contact Form + Google Maps */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+          {/* Contact Form (7 cols) */}
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-sm border border-[#e2e8f0] shadow-sm">
+            <h3 className="font-montserrat font-extrabold text-2xl text-[#0f172a] mb-2">
+              Envoyer un Message / Demande de Devis
+            </h3>
+            <p className="font-grotesk text-[#43474e] text-sm mb-8">
+              Remplissez les informations ci-dessous, notre équipe vous répondra dans les plus brefs délais.
+            </p>
+
+            {formSuccess && (
+              <div className="mb-6 p-4 bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 rounded font-grotesk text-sm flex items-center gap-2">
+                <Check size={20} className="text-emerald-400" />
+                <span>Votre message a été transmis avec succès à notre équipe !</span>
               </div>
-              <h3 className="font-montserrat font-bold text-2xl text-[#000613] tracking-tight">
-                Une urgence sur votre groupe frigorifique ?
-              </h3>
-              <p className="font-grotesk text-sm text-[#43474e] mt-2">
-                Nos techniciens mobiles interviennent sur site ou dans nos ateliers de Tunis pour diagnostiquer et rétablir votre froid immédiatement.
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4 font-grotesk">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                    Nom Complet *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Sami Ben Ali"
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                    Adresse Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="contact@societe.tn"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                    Téléphone
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+216 98 000 000"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613] font-mono-tech"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                    Entreprise / Société
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Nom de la société"
+                    value={formData.companyName}
+                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                    Type de Véhicule
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="ex. Renault Master / Peugeot Partner"
+                    value={formData.vehicleType}
+                    onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
+                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                    Service Souhaité
+                  </label>
+                  <select
+                    value={formData.serviceType}
+                    onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
+                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] focus:outline-none focus:border-[#000613]"
+                  >
+                    <option value="Climatisation Automobile">Climatisation Automobile</option>
+                    <option value="Installation Frigorifique">Installation Frigorifique Utilitaires</option>
+                    <option value="Transformation Isotherme">Transformation Cabine Isotherme</option>
+                    <option value="Maintenance & Dépannage">Maintenance & Dépannage Rapide</option>
+                    <option value="Achat de Pièces">Achat de Pièces & Équipements</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
+                  Message / Détails de votre demande *
+                </label>
+                <textarea
+                  rows={4}
+                  required
+                  placeholder="Décrivez votre besoin technique, le volume de caisse, la température requise (+4°C ou -20°C)..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full py-3.5 bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase tracking-widest rounded shadow-sm transition-all flex items-center justify-center gap-2"
+              >
+                <Send size={16} />
+                <span>{submitting ? 'Envoi en cours...' : 'Envoyer la Demande de Devis'}</span>
+              </button>
+            </form>
+          </div>
+
+          {/* Location & Google Maps (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="bg-white border border-[#e2e8f0] p-8 rounded-sm text-[#0f172a] shadow-sm">
+              <div className="flex items-center gap-2 text-[#007aff] font-mono-tech text-xs uppercase font-bold mb-3">
+                <MapPin size={16} />
+                <span>NOTRE ATELIER ET SIÈGE SOCIAL</span>
+              </div>
+              <h4 className="font-montserrat font-bold text-xl text-[#0f172a] mb-2">
+                Zone Industrielle, Tunis, Tunisie
+              </h4>
+              <p className="font-grotesk text-[#43474e] text-sm leading-relaxed mb-4">
+                Nos ateliers sont équipés de bancs d'essai thermiques numériques et de stations de charge pour une prise en charge rapide de vos véhicules.
               </p>
+              <div className="font-mono-tech text-xs text-amber-600 bg-amber-50 p-3 rounded border border-amber-200">
+                Coordonnées GPS: 36.8065° N, 10.1815° E
+              </div>
             </div>
 
-            <div className="lg:col-span-8">
-              {quickMessageSent ? (
-                <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-sm text-emerald-800 flex items-center gap-3">
-                  <Check className="text-emerald-600" size={24} />
-                  <div>
-                    <div className="font-bold font-montserrat">Demande reçue par notre régie technique !</div>
-                    <div className="text-sm font-grotesk">Un ingénieur vous rappelle au numéro indiqué dans les 15 minutes.</div>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleQuickSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block font-mono-tech text-[11px] font-bold uppercase text-slate-600 mb-1">
-                      Nom / Société
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="ex. Transports Express"
-                      value={quickMessage.name}
-                      onChange={(e) => setQuickMessage({ ...quickMessage, name: e.target.value })}
-                      className="w-full bg-[#faf9fc] border border-[#e2e8f0] focus:border-[#007aff] px-3.5 py-2.5 rounded-sm font-grotesk text-sm text-[#000613] outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-mono-tech text-[11px] font-bold uppercase text-slate-600 mb-1">
-                      Téléphone
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+216 -- --- ---"
-                      value={quickMessage.contact}
-                      onChange={(e) => setQuickMessage({ ...quickMessage, contact: e.target.value })}
-                      className="w-full bg-[#faf9fc] border border-[#e2e8f0] focus:border-[#007aff] px-3.5 py-2.5 rounded-sm font-grotesk text-sm text-[#000613] outline-none font-mono-tech"
-                    />
-                  </div>
-
-                  <div className="flex items-end">
-                    <button
-                      type="submit"
-                      className="w-full bg-[#000613] hover:bg-[#001f3f] text-white px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 h-[42px]"
-                    >
-                      <Send size={14} />
-                      <span>Rappel Immédiat</span>
-                    </button>
-                  </div>
-                </form>
-              )}
+            {/* Google Maps Iframe */}
+            <div className="rounded-sm overflow-hidden border border-[#e2e8f0] shadow-sm h-[340px] bg-[#f4f5f7]">
+              <iframe
+                title="ShykAuto Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102237.49168925828!2d10.1118128!3d36.8065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd337f5e7ef543%3A0xd671924e714a0275!2sTunis%2C%20Tunisia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
+
         </div>
 
       </div>

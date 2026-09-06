@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActiveTab } from '../types';
+import { COLORS } from '../constants/theme';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -8,64 +9,68 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) => {
   return (
-    <footer className="bg-[#000613] text-white pt-20 pb-16 border-t border-white/10">
+    <footer className="text-white pt-20 pb-16 border-t border-[#1e293b] bg-[#05080f]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         
         {/* Top Section: Brand Name */}
         <div className="mb-14">
-          <h2 className="font-montserrat font-black text-4xl sm:text-5xl tracking-tight text-white uppercase">
-            SHYK AUTO
-          </h2>
-          <p className="font-mono-tech text-xs text-[#00e3fd] tracking-widest uppercase mt-2">
+          <button
+            onClick={() => {
+              setActiveTab('home');
+              if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="group text-left focus:outline-none block"
+          >
+            <h2 className="font-montserrat font-black text-4xl sm:text-5xl tracking-tight uppercase">
+              <span className="text-white group-hover:text-[#007aff] transition-colors duration-200">SHYK</span>
+              {' '}
+              <span className="text-white group-hover:text-[#cbd5e1] transition-colors duration-200">AUTO</span>
+            </h2>
+          </button>
+          <p className="font-mono-tech text-xs tracking-widest uppercase mt-2 text-[#cbd5e1]">
             Automotive Climate & Refrigeration Engineering Since 1985
           </p>
         </div>
 
         {/* Middle Section: Links & Directory */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-[#1e293b]">
           
-          {/* Links Column as in design */}
+          {/* Links Column */}
           <div className="space-y-4">
             <div className="font-mono-tech text-xs font-bold uppercase tracking-widest text-slate-400">
-              LINKS
+              NAVIGATION
             </div>
             <ul className="space-y-3 font-grotesk text-sm text-slate-300">
               <li>
                 <button
-                  onClick={() => alert("Politique de Confidentialité : SHYK AUTO protège rigoureusement vos données techniques et d'entreprise.")}
-                  className="hover:text-[#00e3fd] transition-colors"
+                  onClick={() => setActiveTab('about')}
+                  className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Privacy Policy
+                  À propos & Histoire
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => alert("Conditions Générales de Service : Interventions techniques certifiées conformes aux spécifications constructeurs.")}
-                  className="hover:text-[#00e3fd] transition-colors"
+                  onClick={() => setActiveTab('services')}
+                  className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Terms of Service
+                  Nos Services
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    setActiveTab('heritage');
-                    document.getElementById('heritage')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="hover:text-[#00e3fd] transition-colors"
+                  onClick={() => setActiveTab('products')}
+                  className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Heritage
+                  Catalogue Produits
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    setActiveTab('contact');
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="hover:text-[#00e3fd] transition-colors"
+                  onClick={() => setActiveTab('projects')}
+                  className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Global Locations
+                  Galerie Réalisations
                 </button>
               </li>
             </ul>
@@ -78,22 +83,22 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
             </div>
             <ul className="space-y-3 font-grotesk text-sm text-slate-300">
               <li>
-                <button onClick={() => setActiveTab('inventory')} className="hover:text-[#00e3fd] transition-colors">
+                <button onClick={() => setActiveTab('products')} className="hover:text-[#cbd5e1] transition-colors">
                   Groupes Frigorifiques Route
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('inventory')} className="hover:text-[#00e3fd] transition-colors">
+                <button onClick={() => setActiveTab('products')} className="hover:text-[#cbd5e1] transition-colors">
                   Unités Secteur 380V Standby
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('services')} className="hover:text-[#00e3fd] transition-colors">
+                <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
                   Systèmes Climatisation Diavia
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('services')} className="hover:text-[#00e3fd] transition-colors">
+                <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
                   Chauffages Webasto Air Top
                 </button>
               </li>
@@ -109,10 +114,10 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
               Centre technique agréé pour la pose, recharge thermodynamique, attestation d'étanchéité et mise en service conforme ATP.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="font-mono-tech text-[10px] bg-[#001f3f] px-2.5 py-1 rounded text-[#00e3fd] border border-[#00e3fd]/30">
+              <span className="font-mono-tech text-[10px] px-2.5 py-1 rounded border bg-[#0a1329] text-[#cbd5e1] border-[#cbd5e1]/30">
                 WEBASTO CERTIFIED
               </span>
-              <span className="font-mono-tech text-[10px] bg-[#001f3f] px-2.5 py-1 rounded text-[#00e3fd] border border-[#00e3fd]/30">
+              <span className="font-mono-tech text-[10px] px-2.5 py-1 rounded border bg-[#0a1329] text-[#cbd5e1] border-[#cbd5e1]/30">
                 DIAVIA PARTNER
               </span>
             </div>
@@ -126,20 +131,20 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
             <div className="font-grotesk text-xs text-slate-300 space-y-1">
               <p>Zone Industrielle de Tunis</p>
               <p>Tunisie</p>
-              <p className="font-mono-tech text-[#00e3fd] pt-2">+216 71 000 000</p>
+              <p className="font-mono-tech pt-2 text-[#cbd5e1] font-bold">+216 71 000 000</p>
             </div>
             <button
               onClick={onOpenInquire}
-              className="bg-[#00e3fd] hover:bg-[#00c5dc] text-[#000613] px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all w-full text-center"
+              className="px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all w-full text-center bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-md"
             >
-              Prendre Rendez-vous
+              Demander un Devis
             </button>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-tech text-slate-400">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-tech text-slate-500">
           <div>
             <span>TUNISIE — EXPÉDITION & INTERVENTION NATIONALE</span>
           </div>

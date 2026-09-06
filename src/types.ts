@@ -1,4 +1,4 @@
-export type ActiveTab = 'home' | 'heritage' | 'inventory' | 'services' | 'contact';
+export type ActiveTab = 'home' | 'about' | 'services' | 'products' | 'projects' | 'contact' | 'admin';
 
 export interface Milestone {
   year: string;
@@ -18,19 +18,68 @@ export interface TechnicalPart {
   specs: string[];
 }
 
-export interface InventoryItem {
+export interface ServiceItem {
+  id: string;
+  title: string;
+  slug: string;
+  shortDescription: string;
+  fullDescription: string;
+  icon?: string;
+  image?: string;
+  features?: string[] | any;
+  order?: number;
+}
+
+export interface ProductItem {
   id: string;
   name: string;
-  category: 'direct-drive' | 'electric-standby' | 'multi-temp' | 'ac-systems';
-  modelCode: string;
-  coolingCapacity0C: string;
-  coolingCapacityMinus20C: string;
-  boxVolume: string;
-  refrigerant: string;
-  technology: string;
-  tag: string;
-  image: string;
+  slug: string;
+  category: string;
   description: string;
+  price?: number | null;
+  availability: 'IN_STOCK' | 'OUT_OF_STOCK' | 'ON_REQUEST';
+  images: string[];
+  specs?: Record<string, string> | any;
+  featured?: boolean;
+}
+
+export type InventoryItem = ProductItem | any;
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  slug: string;
+  category: string;
+  type: 'BEFORE_AFTER' | 'SIMPLE';
+  description: string;
+  client?: string | null;
+  images?: string[];
+  beforeImage?: string | null;
+  afterImage?: string | null;
+  date?: string | null;
+  featured?: boolean;
+}
+
+export interface MessageItem {
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  companyName?: string | null;
+  vehicleType?: string | null;
+  serviceType?: string | null;
+  message: string;
+  status: 'NEW' | 'READ' | 'ARCHIVED';
+  createdAt: string;
+}
+
+export interface AdminStats {
+  products: { total: number };
+  services: { total: number };
+  projects: { total: number; beforeAfter: number; simple: number };
+  messages: { total: number; unread: number };
+  visits: { total: number };
+  recentMessages?: MessageItem[];
 }
 
 export interface InquireFormState {
