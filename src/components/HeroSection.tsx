@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ThermometerSnowflake, ShieldCheck, Wrench } from 'lucide-react';
-import heroTruckImage from './../../assets/images/img.png';
+import heroTruckImage from '../../assets/images/shyk-auto-hero.jpg';
 import { COLORS } from '../constants/theme';
 
 interface HeroSectionProps {
@@ -17,7 +17,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
-          src={typeof heroTruckImage === 'string' ? heroTruckImage : heroTruckImage.src}
+          src={typeof heroTruckImage === 'string' ? heroTruckImage : (heroTruckImage as any).src}
           alt="SHYK AUTO Camionnette frigorifique avec groupe froid"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-right md:object-center opacity-85 filter brightness-95 contrast-105"
