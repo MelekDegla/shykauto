@@ -1,12 +1,13 @@
 import { Milestone, TechnicalPart, InventoryItem } from '../types';
 
 export const HERITAGE_TEXT = {
-  title: "Our Heritage",
+  badge: "QUI SOMMES-NOUS ? • DEPUIS 1985",
+  title: "Une expertise de plus de 40 ans dans le froid embarqué.",
   yearWatermark: "1985",
   paragraphs: [
-    "Doucar was born from a singular vision in 1985: to master automotive climate control in demanding environments. We established the standard for reliability when it mattered most.",
-    "Today, operating as SHYK-AUTO, we continue to engineer architectural solutions for mobile refrigeration and air conditioning. Our expertise is built on decades of hands-on technical mastery, ensuring that every system we design, install, or repair meets exact specifications.",
-    "We don't just fix parts; we engineer environmental stability for vehicles."
+    "Fondée en 1985 sous le nom de Doucar, SHYK AUTO accompagne depuis plus de quatre décennies les professionnels et les particuliers dans leurs besoins en froid et en climatisation automobile.",
+    "Nous intervenons sur l’ensemble de la chaîne thermique du véhicule : installation de groupes frigorifiques, aménagement de véhicules isothermes, systèmes de climatisation automobile, maintenance et dépannage.",
+    "Notre approche repose sur un savoir-faire technique reconnu, une écoute attentive des besoins de chaque client et des solutions adaptées à chaque type de véhicule et d’utilisation."
   ]
 };
 
@@ -158,18 +159,23 @@ export const INVENTORY_CATALOG: InventoryItem[] = [
 export const ENGAGEMENTS_DATA = [
   {
     icon: "shield-check",
-    title: "Qualité Supérieure",
-    description: "Des pièces d'origine et une exécution irréprochable pour chaque intervention."
+    title: "Expertise technique",
+    description: "Une expérience de plus de 40 ans dans le froid embarqué et la climatisation automobile."
+  },
+  {
+    icon: "wrench",
+    title: "Solutions sur mesure",
+    description: "Chaque installation est étudiée selon le type de véhicule, son utilisation et les besoins spécifiques de votre activité."
   },
   {
     icon: "clock",
-    title: "Délais Respectés",
-    description: "Une gestion du temps rigoureuse pour minimiser l'immobilisation de vos véhicules."
+    title: "Réactivité",
+    description: "Un diagnostic et une prise en charge pensés pour limiter l’immobilisation de vos véhicules."
   },
   {
     icon: "handshake",
-    title: "Service Client",
-    description: "Un accompagnement personnalisé et transparent tout au long de notre collaboration."
+    title: "Transparence",
+    description: "Des explications claires sur les travaux à réaliser et les solutions proposées, avant toute intervention."
   }
 ];
 

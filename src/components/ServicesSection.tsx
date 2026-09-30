@@ -49,21 +49,21 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquire 
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <span className="font-mono-tech text-xs tracking-widest uppercase font-bold text-[#007aff]">
-              DOMAINES D'EXPERTISE TECHNIQUE
+              NOS SOLUTIONS
             </span>
             <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl tracking-tight mt-1 text-[#0f172a]">
-              Nos <span className="text-[#007aff]">Services Principaux.</span>
+              Des solutions thermiques <span className="text-[#007aff]">adaptées à votre activité.</span>
             </h2>
           </div>
           <p className="font-grotesk text-sm sm:text-base text-[#43474e] max-w-md">
-            Des solutions clés en main d'ingénierie frigorifique et de climatisation pour particuliers, professionnels et gestionnaires de flottes.
+            De la climatisation automobile au froid embarqué, SHYK AUTO propose des solutions adaptées aux véhicules particuliers, utilitaires et professionnels.
           </p>
         </div>
 
         {/* Services Grid */}
         {loading ? (
           <div className="py-20 text-center font-mono-tech text-slate-500 animate-pulse">
-            Chargement des services...
+            Chargement de nos solutions...
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -115,13 +115,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquire 
                     onClick={() => setSelectedService(service)}
                     className="flex-1 py-3 px-4 rounded bg-[#f4f5f7] hover:bg-[#e2e8f0] text-[#43474e] hover:text-[#0f172a] border border-[#e2e8f0] font-mono-tech text-xs font-bold uppercase transition-all text-center"
                   >
-                    Détails Complète
+                    En savoir plus
                   </button>
                   <button
                     onClick={() => onOpenInquire(service.title)}
                     className="flex-1 py-3 px-4 rounded bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
-                    <span>Devis</span>
+                    <span>Demander un devis</span>
                     <ArrowRight size={14} />
                   </button>
                 </div>

@@ -22,7 +22,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
             À Propos de <span className="text-[#007aff]">Shyk</span><span className="text-[#cbd5e1]">Auto.</span>
           </h1>
           <p className="font-grotesk text-slate-300 text-base sm:text-xl max-w-3xl mt-4 font-light leading-relaxed">
-            Depuis 1985, quatre décennies d'excellence thermodynamique, d'ingénierie frigorifique mobile et d'accompagnement technique pour l'automobile et les transports professionnels en Tunisie.
+            Depuis 1985, plus de 40 ans d'expérience dans l'installation, l'aménagement, la maintenance et la réparation d'équipements frigorifiques et systèmes de climatisation automobile en Tunisie.
           </p>
         </div>
       </section>

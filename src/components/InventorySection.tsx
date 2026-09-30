@@ -50,14 +50,14 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ onSelectItem
           <div>
             <div className="flex items-center gap-2 font-mono-tech text-xs tracking-widest uppercase font-bold mb-2 text-[#007aff]">
               <Package size={16} />
-              <span>CATALOGUE PIÈCES & EQUIPEMENTS</span>
+              <span>ÉQUIPEMENTS & SOLUTIONS</span>
             </div>
             <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl tracking-tight text-[#0f172a]">
-              Nos <span className="text-[#007aff]">Produits.</span>
+              Les équipements <span className="text-[#007aff]">adaptés à vos besoins.</span>
             </h2>
           </div>
           <p className="font-grotesk text-sm sm:text-base text-[#43474e] max-w-md">
-            Pièces d'origine certifiées, groupes frigorifiques et accessoires pour climatisation automobile et transport isotherme.
+            Découvrez notre sélection d’équipements et de solutions dédiés au froid embarqué, à la climatisation et à l’aménagement des véhicules professionnels.
           </p>
         </div>
 
@@ -171,7 +171,7 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ onSelectItem
                     onClick={() => onSelectItemForQuote(item)}
                     className="px-4 py-2.5 rounded bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase transition-all flex items-center gap-1.5 shadow-sm"
                   >
-                    <span>Devis</span>
+                    <span>Demander un devis</span>
                     <ArrowRight size={14} />
                   </button>
                 </div>

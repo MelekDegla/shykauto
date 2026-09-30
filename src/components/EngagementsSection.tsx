@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShieldCheck, Timer, HeartHandshake, Eye } from 'lucide-react';
-import { TRANSPARENCE_DATA } from '../data/content';
+import { ShieldCheck, Timer, HeartHandshake, Eye, Wrench } from 'lucide-react';
+import { TRANSPARENCE_DATA, ENGAGEMENTS_DATA } from '../data/content';
 
 export const EngagementsSection: React.FC = () => {
   return (
@@ -9,74 +9,49 @@ export const EngagementsSection: React.FC = () => {
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl tracking-tight text-[#0f172a]">
-            Nos Engagements
+          <span className="font-mono-tech text-xs tracking-widest text-[#007aff] uppercase font-bold">
+            NOS ENGAGEMENTS
+          </span>
+          <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl tracking-tight text-[#0f172a] mt-2">
+            Une exigence technique à chaque intervention.
           </h2>
-          <p className="font-mono-tech text-xs sm:text-sm tracking-[0.2em] text-[#43474e] uppercase font-bold mt-3">
-            THE STANDARDS WE HOLD
+          <p className="font-grotesk text-sm sm:text-base text-[#43474e] mt-4 leading-relaxed">
+            Chaque véhicule et chaque installation répond à des contraintes différentes. Notre rôle est de proposer une solution fiable, adaptée et durable.
           </p>
         </div>
 
-        {/* 3 Ghost Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-8">
+        {/* 4 Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {ENGAGEMENTS_DATA.map((item, index) => {
+            const getIcon = () => {
+              switch (item.icon) {
+                case 'shield-check': return <ShieldCheck size={24} strokeWidth={1.75} />;
+                case 'wrench': return <Wrench size={24} strokeWidth={1.75} />;
+                case 'clock': return <Timer size={24} strokeWidth={1.75} />;
+                case 'handshake': return <HeartHandshake size={24} strokeWidth={1.75} />;
+                default: return <ShieldCheck size={24} strokeWidth={1.75} />;
+              }
+            };
 
-          {/* Card 1: Qualité Supérieure */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 sm:p-10 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-8 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
-                <ShieldCheck size={24} strokeWidth={1.75} />
+            return (
+              <div
+                key={index}
+                className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-6 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
+                    {getIcon()}
+                  </div>
+                  <h3 className="font-montserrat font-bold text-xl tracking-tight mb-3 text-[#0f172a]">
+                    {item.title}
+                  </h3>
+                  <p className="font-grotesk text-sm text-[#43474e] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight mb-4 text-[#0f172a]">
-                Qualité Supérieure
-              </h3>
-              <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Des pièces d'origine et une exécution irréprochable pour chaque intervention.
-              </p>
-            </div>
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0]/60 flex items-center justify-between text-xs font-mono-tech text-slate-400">
-              <span>NORME ISO 9001 / ATP</span>
-              <span className="text-[#007aff] font-bold">100% OEM</span>
-            </div>
-          </div>
-
-          {/* Card 2: Délais Respectés */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 sm:p-10 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-8 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
-                <Timer size={24} strokeWidth={1.75} />
-              </div>
-              <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight mb-4 text-[#0f172a]">
-                Délais Respectés
-              </h3>
-              <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Une gestion du temps rigoureuse pour minimiser l'immobilisation de vos véhicules.
-              </p>
-            </div>
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0]/60 flex items-center justify-between text-xs font-mono-tech text-slate-400">
-              <span>DISPONIBILITÉ FLOTTE</span>
-              <span className="text-[#007aff] font-bold">EXPRESS 24H</span>
-            </div>
-          </div>
-
-          {/* Card 3: Service Client */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 sm:p-10 rounded-sm transition-all duration-300 group shadow-sm hover:shadow-md flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-sm bg-[#faf9fc] border border-[#e2e8f0] flex items-center justify-center text-[#000613] transition-colors mb-8 group-hover:bg-[#000613] group-hover:text-[#cbd5e1]">
-                <HeartHandshake size={24} strokeWidth={1.75} />
-              </div>
-              <h3 className="font-montserrat font-bold text-xl sm:text-2xl tracking-tight mb-4 text-[#0f172a]">
-                Service Client
-              </h3>
-              <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Un accompagnement personnalisé et transparent tout au long de notre collaboration.
-              </p>
-            </div>
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0]/60 flex items-center justify-between text-xs font-mono-tech text-slate-400">
-              <span>SUPPORT DÉDIÉ</span>
-              <span className="text-[#007aff] font-bold">ASSISTANCE PRO</span>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
 
         {/* Wide Card: Transparence Totale */}

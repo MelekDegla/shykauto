@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
     <footer className="text-white pt-20 pb-16 border-t border-[#1e293b] bg-[#05080f]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         
-        {/* Top Section: Brand Name */}
+        {/* Top Section: Brand Name & Intro */}
         <div className="mb-14">
           <button
             onClick={() => {
@@ -27,15 +27,18 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
               <span className="text-white group-hover:text-[#cbd5e1] transition-colors duration-200">AUTO</span>
             </h2>
           </button>
-          <p className="font-mono-tech text-xs tracking-widest uppercase mt-2 text-[#cbd5e1]">
-            Automotive Climate & Refrigeration Engineering Since 1985
+          <p className="font-mono-tech text-xs tracking-widest uppercase mt-2 text-[#cbd5e1] font-bold">
+            Froid embarqué • Climatisation automobile • Solutions thermiques
+          </p>
+          <p className="font-grotesk text-sm text-slate-400 max-w-2xl mt-3 leading-relaxed">
+            Depuis 1985, SHYK AUTO accompagne les professionnels et les particuliers dans l’installation, la maintenance et la réparation de leurs équipements frigorifiques et systèmes de climatisation automobile.
           </p>
         </div>
 
         {/* Middle Section: Links & Directory */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-[#1e293b]">
           
-          {/* Links Column */}
+          {/* Navigation Column */}
           <div className="space-y-4">
             <div className="font-mono-tech text-xs font-bold uppercase tracking-widest text-slate-400">
               NAVIGATION
@@ -43,10 +46,18 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
             <ul className="space-y-3 font-grotesk text-sm text-slate-300">
               <li>
                 <button
+                  onClick={() => setActiveTab('home')}
+                  className="hover:text-[#cbd5e1] transition-colors"
+                >
+                  Accueil
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => setActiveTab('about')}
                   className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  À propos & Histoire
+                  À propos
                 </button>
               </li>
               <li>
@@ -54,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
                   onClick={() => setActiveTab('services')}
                   className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Nos Services
+                  Nos services
                 </button>
               </li>
               <li>
@@ -62,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
                   onClick={() => setActiveTab('products')}
                   className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Catalogue Produits
+                  Nos solutions
                 </button>
               </li>
               <li>
@@ -70,7 +81,15 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
                   onClick={() => setActiveTab('projects')}
                   className="hover:text-[#cbd5e1] transition-colors"
                 >
-                  Galerie Réalisations
+                  Nos réalisations
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveTab('contact')}
+                  className="hover:text-[#cbd5e1] transition-colors"
+                >
+                  Contact
                 </button>
               </li>
             </ul>
@@ -79,66 +98,69 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
           {/* Solutions Column */}
           <div className="space-y-4">
             <div className="font-mono-tech text-xs font-bold uppercase tracking-widest text-slate-400">
-              SOLUTIONS
+              NOS SOLUTIONS
             </div>
             <ul className="space-y-3 font-grotesk text-sm text-slate-300">
               <li>
-                <button onClick={() => setActiveTab('products')} className="hover:text-[#cbd5e1] transition-colors">
-                  Groupes Frigorifiques Route
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('products')} className="hover:text-[#cbd5e1] transition-colors">
-                  Unités Secteur 380V Standby
+                <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
+                  Groupes frigorifiques
                 </button>
               </li>
               <li>
                 <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
-                  Systèmes Climatisation Diavia
+                  Véhicules isothermes
                 </button>
               </li>
               <li>
                 <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
-                  Chauffages Webasto Air Top
+                  Climatisation automobile
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
+                  Maintenance & dépannage
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('products')} className="hover:text-[#cbd5e1] transition-colors">
+                  Équipements & pièces
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Technical Certifications */}
-          <div className="space-y-4">
+          {/* Contact Column */}
+          <div className="space-y-4 md:col-span-2">
             <div className="font-mono-tech text-xs font-bold uppercase tracking-widest text-slate-400">
-              ACCRÉDITATIONS
+              CONTACT
             </div>
-            <p className="font-grotesk text-xs text-slate-400 leading-relaxed">
-              Centre technique agréé pour la pose, recharge thermodynamique, attestation d'étanchéité et mise en service conforme ATP.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="font-mono-tech text-[10px] px-2.5 py-1 rounded border bg-[#0a1329] text-[#cbd5e1] border-[#cbd5e1]/30">
-                WEBASTO CERTIFIED
-              </span>
-              <span className="font-mono-tech text-[10px] px-2.5 py-1 rounded border bg-[#0a1329] text-[#cbd5e1] border-[#cbd5e1]/30">
-                DIAVIA PARTNER
-              </span>
-            </div>
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="font-grotesk text-xs text-slate-300 space-y-1.5">
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase">Atelier / Siège</div>
+                <p>Zone Industrielle de Tunis</p>
+                <p>Tunisie</p>
+                
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Horaires</div>
+                <p>Lundi – Vendredi : 08h00 – 18h00</p>
+              </div>
 
-          {/* Direct CTA */}
-          <div className="space-y-4">
-            <div className="font-mono-tech text-xs font-bold uppercase tracking-widest text-slate-400">
-              ATELIER CENTRAL
+              <div className="font-grotesk text-xs text-slate-300 space-y-1.5">
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase">Téléphone</div>
+                <p className="font-mono-tech text-[#cbd5e1] font-bold text-sm">+216 71 000 000</p>
+
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Email</div>
+                <p className="font-mono-tech text-[#cbd5e1]">contact@shykauto.com</p>
+                
+                <div className="pt-2">
+                  <button
+                    onClick={onOpenInquire}
+                    className="px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-md"
+                  >
+                    Demander un devis
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="font-grotesk text-xs text-slate-300 space-y-1">
-              <p>Zone Industrielle de Tunis</p>
-              <p>Tunisie</p>
-              <p className="font-mono-tech pt-2 text-[#cbd5e1] font-bold">+216 71 000 000</p>
-            </div>
-            <button
-              onClick={onOpenInquire}
-              className="px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all w-full text-center bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-md"
-            >
-              Demander un Devis
-            </button>
           </div>
 
         </div>
@@ -146,10 +168,12 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-tech text-slate-500">
           <div>
-            <span>TUNISIE — EXPÉDITION & INTERVENTION NATIONALE</span>
+            <span>© 2026 SHYK AUTO — Tous droits réservés. Froid embarqué & climatisation automobile depuis 1985.</span>
           </div>
-          <div className="tracking-widest uppercase">
-            © 1985 SHYK AUTO. ARCHITECTURAL AUTOMOTIVE EXCELLENCE.
+          <div className="flex gap-4">
+            <a href="#contact" className="hover:text-slate-300 transition-colors">Mentions légales</a>
+            <span>·</span>
+            <a href="#contact" className="hover:text-slate-300 transition-colors">Politique de confidentialité</a>
           </div>
         </div>
 

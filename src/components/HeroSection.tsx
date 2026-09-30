@@ -33,17 +33,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-20 lg:py-28 w-full">
         <div className="max-w-3xl">
+          {/* Badge Above Title */}
+          <div className="inline-block font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] bg-white/10 px-3.5 py-1 rounded border border-white/20 mb-4 backdrop-blur-sm">
+            EXPERTISE • FIABILITÉ • RÉACTIVITÉ
+          </div>
+
           {/* Main Display Headline */}
-          <h1 className="font-montserrat font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-[0.95] mb-6 sm:mb-8 drop-shadow-sm">
-            ARCHITECTS<br />
-            OF COLD.
+          <h1 className="font-montserrat font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white uppercase leading-[1.02] mb-6 sm:mb-8 drop-shadow-sm">
+            SOLUTIONS FRIGORIFIQUES & CLIMATISATION AUTOMOBILE
           </h1>
 
           {/* Subtitle with vertical accent indicator */}
-            <div className="flex items-start gap-4 sm:gap-5 border-l-4 border-[#cbd5e1] pl-4 sm:pl-6 py-1 max-w-2xl">
-            <p className="font-grotesk text-lg sm:text-xl lg:text-2xl text-slate-100 font-light leading-relaxed">
-              Leading automotive climate & refrigeration in Tunisia since 1985.<br className="hidden sm:inline" />
-              Engineering precise environmental control for specialized transport.
+          <div className="flex flex-col gap-3 border-l-4 border-[#cbd5e1] pl-4 sm:pl-6 py-1 max-w-2xl">
+            <h2 className="font-montserrat font-bold text-xl sm:text-2xl text-white">
+              Le froid embarqué, maîtrisé depuis 1985.
+            </h2>
+            <p className="font-grotesk text-base sm:text-lg text-slate-200 font-light leading-relaxed">
+              SHYK AUTO accompagne les professionnels et les particuliers dans l’installation, l’aménagement, la maintenance et la réparation de leurs équipements frigorifiques et systèmes de climatisation automobile.
             </p>
           </div>
 
@@ -67,15 +73,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </button>
           </div>
 
-          {/* Engineering Metadata Badges */}
-          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-3 gap-6">
+          {/* Key Stat Indicators */}
+          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded border bg-white/5 border-white/10 text-[#cbd5e1]">
+                <Wrench size={18} />
+              </div>
+              <div>
+                <div className="font-montserrat font-extrabold text-xl text-white">40+ ANS</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">d’expérience</div>
+              </div>
+            </div>
+
             <div className="flex items-center gap-3">
               <div className="p-2 rounded border bg-white/5 border-white/10 text-[#cbd5e1]">
                 <ShieldCheck size={18} />
               </div>
               <div>
-                <div className="font-mono-tech text-[10px] uppercase tracking-wider text-slate-400">Homologation</div>
-                <div className="font-montserrat font-bold text-sm text-white">WEBASTO & DIAVIA</div>
+                <div className="font-montserrat font-extrabold text-xl text-white">12 000+</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">véhicules équipés</div>
               </div>
             </div>
 
@@ -84,18 +100,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <ThermometerSnowflake size={18} />
               </div>
               <div>
-                <div className="font-mono-tech text-[10px] uppercase tracking-wider text-slate-400">Plage Thermique</div>
-                <div className="font-montserrat font-bold text-sm text-white">-25°C à +15°C ATP</div>
-              </div>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-3">
-              <div className="p-2 rounded border bg-white/5 border-white/10 text-[#cbd5e1]">
-                <Wrench size={18} />
-              </div>
-              <div>
-                <div className="font-mono-tech text-[10px] uppercase tracking-wider text-slate-400">Expérience</div>
-                <div className="font-montserrat font-bold text-sm text-white">40 Ans d'Excellence</div>
+                <div className="font-montserrat font-extrabold text-xl text-white">-20°C À +15°C</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">solutions de température contrôlée</div>
               </div>
             </div>
           </div>

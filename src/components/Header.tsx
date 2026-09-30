@@ -19,9 +19,9 @@ export const Header: React.FC<HeaderProps> = ({
   const navItems: { id: ActiveTab; label: string }[] = [
     { id: 'home', label: 'Accueil' },
     { id: 'about', label: 'À propos' },
-    { id: 'services', label: 'Services' },
-    { id: 'products', label: 'Produits' },
-    { id: 'projects', label: 'Réalisations' },
+    { id: 'services', label: 'Nos services' },
+    { id: 'products', label: 'Nos solutions' },
+    { id: 'projects', label: 'Nos réalisations' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -99,7 +99,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={onOpenInquire}
             className="group relative overflow-hidden bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-2"
           >
-            <span>Devis / Inquire</span>
+            <span>Demander un devis</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#000613] group-hover:scale-125 transition-transform" />
           </button>
         </div>
@@ -170,7 +170,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className="w-full text-[#000613] py-3 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest text-center bg-[#cbd5e1]"
               >
-                Demander un Devis
+                Demander un devis
               </button>
             </div>
           </div>

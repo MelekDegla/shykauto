@@ -37,43 +37,51 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
   const coreServices = [
     {
       id: 'clim',
-      title: 'Climatisation Automobile',
+      number: '01',
+      title: 'CLIMATISATION AUTOMOBILE',
+      tagline: 'Confort et performance, toute l’année.',
       icon: <Wind size={26} className="text-[#cbd5e1]" />,
-      shortDesc: 'Réparation de compresseurs, recherche de micro-fuites par azote et recharge gaz réfrigérant R134a / R1234yf.',
-      badge: 'PARTICULIERS & PROS',
+      shortDesc: 'Diagnostic, entretien et réparation des systèmes de climatisation automobile. Nous intervenons notamment sur les compresseurs, les circuits frigorifiques, la recherche de fuites et la recharge en fluide frigorigène.',
+      badge: 'CLIMATISATION',
     },
     {
       id: 'frigo',
-      title: 'Installation Frigorifique Utilitaires',
+      number: '02',
+      title: 'GROUPES FRIGORIFIQUES',
+      tagline: 'Maîtrisez la température de vos marchandises.',
       icon: <Snowflake size={26} className="text-sky-400" />,
-      shortDesc: 'Groupes froid positif (+4°C) et négatif (-20°C) à entraînement direct poulie-moteur et standby électrique 380V.',
-      badge: 'NORMES ATP / FRC',
+      shortDesc: 'Installation de systèmes de réfrigération pour véhicules utilitaires et professionnels. Nos solutions permettent de maintenir une température adaptée au transport de produits nécessitant des conditions thermiques contrôlées.',
+      badge: 'FROID EMBARQUÉ',
     },
     {
       id: 'isotherme',
-      title: 'Transformation & Cabines Isothermes',
+      number: '03',
+      title: 'AMÉNAGEMENT ISOTHERME',
+      tagline: 'Transformez votre véhicule en véritable outil professionnel.',
       icon: <ShieldCheck size={26} className="text-emerald-400" />,
-      shortDesc: 'Aménagement sur-mesure de fourgons avec panneaux polyuréthane haute densité et parois étanches lavables.',
-      badge: 'AGRÉÉ CONTACT ALIMENTAIRE',
+      shortDesc: 'Aménagement et transformation de véhicules destinés au transport sous température contrôlée. Nous adaptons l’isolation et l’aménagement intérieur aux contraintes de votre activité et de votre véhicule.',
+      badge: 'ISOTHERME',
     },
     {
       id: 'maintenance',
-      title: 'Maintenance & Dépannage Rapide',
+      number: '04',
+      title: 'MAINTENANCE & DÉPANNAGE',
+      tagline: 'Préservez la performance de vos équipements.',
       icon: <Wrench size={26} className="text-amber-400" />,
-      shortDesc: 'Contrats de maintenance préventive pour flottes de distribution et atelier mobile d\'intervention d\'urgence.',
-      badge: 'SERVICE 24/7 FLOTTES',
+      shortDesc: 'Entretien préventif, diagnostic et réparation des systèmes frigorifiques et de climatisation. Notre objectif : réduire les immobilisations et assurer la disponibilité de vos véhicules.',
+      badge: 'MAINTENANCE',
     },
   ];
 
   return (
     <div className="w-full bg-[#070b14] text-[#f8fafc]">
-      {/* 1. Hero Section avec Slogan */}
+      {/* 1. Hero Section */}
       <HeroSection
         onOpenInquire={() => onOpenInquire()}
         onExploreServices={() => onNavigateTab('services')}
       />
 
-      {/* 2. Présentation de ShykAuto (Light Theme Section) */}
+      {/* 2. Présentation de ShykAuto (Qui Sommes-Nous) */}
       <section className="py-20 lg:py-28 border-b border-[#e2e8f0] bg-[#f4f5f7] text-[#0f172a] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -87,20 +95,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               </div>
 
               <h2 className="font-montserrat font-black text-3xl sm:text-5xl tracking-tight leading-tight text-[#0f172a]">
-                Pionnier du <span className="text-[#007aff]">Froid Embarqué</span> & de la Climatisation Automobile.
+                Une expertise de plus de <span className="text-[#007aff]">40 ans</span> dans le froid embarqué.
               </h2>
 
               <p className="font-grotesk text-base sm:text-lg text-[#43474e] leading-relaxed">
-                Fondée en 1985 sous le nom historique de <strong className="text-[#0f172a]">Doucar</strong>, l'entreprise s'est réinventée sous l'enseigne <strong className="text-[#0f172a]">ShykAuto</strong> pour devenir le partenaire de référence des transporteurs, des professionnels de l'agroalimentaire, des laboratoires pharmaceutiques et des automobilistes exigeants en Tunisie.
-              </p>
-
-              {/* Contextual narrative paragraphs */}
-              <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Forts de nos 40 années d'expertise sur le terrain, nous intervenons avec rigueur sur l'ensemble de vos besoins thermiques : installation de groupes frigorifiques route et secteur, aménagement isotherme certifié aux normes ATP, et entretien de systèmes de climatisation toutes marques.
+                Fondée en 1985 sous le nom de <strong className="text-[#0f172a]">Doucar</strong>, <strong className="text-[#0f172a]">SHYK AUTO</strong> accompagne depuis plus de quatre décennies les professionnels et les particuliers dans leurs besoins en froid et en climatisation automobile.
               </p>
 
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Nous combinons un savoir-faire artisanal de plus de quatre décennies avec les dernières technologies de diagnostic thermodynamique assisté par ordinateur.
+                Nous intervenons sur l’ensemble de la chaîne thermique du véhicule : installation de groupes frigorifiques, aménagement de véhicules isothermes, systèmes de climatisation automobile, maintenance et dépannage.
+              </p>
+
+              <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
+                Notre approche repose sur un savoir-faire technique reconnu, une écoute attentive des besoins de chaque client et des solutions adaptées à chaque type de véhicule et d’utilisation.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
@@ -108,7 +115,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                   onClick={() => onNavigateTab('about')}
                   className="px-6 py-3.5 rounded-sm text-xs font-mono-tech font-bold uppercase tracking-widest bg-[#000613] hover:bg-[#001f3f] text-white shadow-md transition-all duration-200 flex items-center gap-2"
                 >
-                  <span>En savoir plus sur notre histoire</span>
+                  <span>Découvrir notre histoire</span>
                   <ArrowRight size={14} />
                 </button>
 
@@ -121,46 +128,45 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               </div>
             </div>
 
-            {/* Right Column: Key Metrics */}
+            {/* Right Column: Chiffres Clés */}
             <div className="lg:col-span-5">
               <div className="p-8 rounded-sm border border-[#e2e8f0] bg-white shadow-sm relative overflow-hidden">
                 {/* Top Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007aff] via-sky-400 to-[#000613]" />
                 
                 <h3 className="font-montserrat font-bold text-xl text-[#0f172a] mb-6 flex items-center justify-between">
-                  <span>Chiffres Clés & Engagements</span>
-                  <span className="text-xs font-mono-tech text-[#007aff] bg-[#f4f5f7] px-2.5 py-0.5 rounded border border-[#e2e8f0]">SHYK-DATA</span>
+                  <span>NOTRE EXPÉRIENCE EN QUELQUES CHIFFRES</span>
                 </h3>
 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="border-b border-[#e2e8f0] pb-4">
                     <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">40+</div>
-                    <div className="text-xs font-mono-tech text-[#64748b] uppercase tracking-wider mt-1">Ans d'Excellence</div>
-                    <p className="text-xs text-slate-500 mt-1">Fondé en 1985 (Doucar)</p>
+                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Années d’expérience</div>
+                    <p className="text-xs text-slate-500 mt-1">Un savoir-faire développé depuis 1985.</p>
                   </div>
 
                   <div className="border-b border-[#e2e8f0] pb-4">
-                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#007aff]">12k+</div>
-                    <div className="text-xs font-mono-tech text-[#64748b] uppercase tracking-wider mt-1">Véhicules Équipés</div>
-                    <p className="text-xs text-slate-500 mt-1">Tourisme, utilitaires & camions</p>
+                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#007aff]">12 000+</div>
+                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Véhicules équipés</div>
+                    <p className="text-xs text-slate-500 mt-1">Des véhicules particuliers, utilitaires et professionnels.</p>
                   </div>
 
                   <div className="pt-2">
-                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">100%</div>
-                    <div className="text-xs font-mono-tech text-[#64748b] uppercase tracking-wider mt-1">Conformité ATP</div>
-                    <p className="text-xs text-slate-500 mt-1">Classe FRC (-20°C) & FNA (+12°C)</p>
+                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">1985</div>
+                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Année de création</div>
+                    <p className="text-xs text-slate-500 mt-1">Une histoire qui s’inscrit dans la durée.</p>
                   </div>
 
                   <div className="pt-2">
                     <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#007aff]">24/7</div>
-                    <div className="text-xs font-mono-tech text-[#64748b] uppercase tracking-wider mt-1">Support Flotte</div>
-                    <p className="text-xs text-slate-500 mt-1">Assistance mobile rapide</p>
+                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Assistance professionnelle</div>
+                    <p className="text-xs text-slate-500 mt-1">Une solution d’accompagnement adaptée aux besoins des flottes.</p>
                   </div>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-[#e2e8f0] flex items-center gap-3 text-xs text-[#43474e]">
                   <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                  <span>Agrément technique certifié & pièces garanties constructeur OEM.</span>
+                  <span>Savoir-faire technique reconnu & écoute attentive de vos besoins.</span>
                 </div>
               </div>
             </div>
@@ -169,25 +175,28 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
         </div>
       </section>
 
-      {/* 3. Services Principaux (Cards) */}
+      {/* 3. Services Principaux (NOS SOLUTIONS) */}
       <section className="py-20 lg:py-28 border-b border-[#1e293b] bg-[#090f1d] relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div>
               <span className="font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1]">
-                SOLUTIONS TECHNIQUES VÉHICULES
+                NOS SOLUTIONS
               </span>
               <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl tracking-tight mt-1 text-white">
-                Services <span className="text-[#cbd5e1]">Principaux.</span>
+                Des solutions thermiques <span className="text-[#cbd5e1]">adaptées à votre activité.</span>
               </h2>
+              <p className="font-grotesk text-slate-300 text-sm sm:text-base max-w-2xl mt-3">
+                De la climatisation automobile au froid embarqué, SHYK AUTO propose des solutions adaptées aux véhicules particuliers, utilitaires et professionnels.
+              </p>
             </div>
             
             <button
               onClick={() => onNavigateTab('services')}
               className="group inline-flex items-center gap-2 text-sm font-mono-tech font-bold uppercase tracking-wider text-slate-300 hover:text-[#cbd5e1] transition-colors"
             >
-              <span>Voir les 4 services détaillés</span>
+              <span>Découvrir toutes nos solutions</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -200,17 +209,22 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                 className="p-6 rounded-sm border border-[#1e293b] bg-[#0d1527] hover:bg-[#111c34] hover:border-[#cbd5e1]/60 transition-all duration-300 flex flex-col justify-between group hover:shadow-xl hover:shadow-[#cbd5e1]/5"
               >
                 <div>
-                  <div className="w-12 h-12 rounded bg-[#070b14] border border-[#1e293b] flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform">
-                    {srv.icon}
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="w-12 h-12 rounded bg-[#070b14] border border-[#1e293b] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+                      {srv.icon}
+                    </div>
+                    <span className="font-mono-tech font-bold text-xs text-[#cbd5e1] bg-[#070b14] px-2 py-1 rounded border border-[#1e293b]">
+                      {srv.number}
+                    </span>
                   </div>
 
-                  <span className="text-[10px] font-mono-tech font-bold uppercase tracking-widest text-slate-400 bg-[#070b14] px-2 py-0.5 rounded border border-[#1e293b] inline-block mb-3">
-                    {srv.badge}
-                  </span>
-
-                  <h3 className="font-montserrat font-bold text-lg text-white mb-3 group-hover:text-[#cbd5e1] transition-colors">
+                  <h3 className="font-montserrat font-bold text-lg text-white mb-1 group-hover:text-[#cbd5e1] transition-colors">
                     {srv.title}
                   </h3>
+
+                  <p className="font-grotesk text-xs text-[#cbd5e1] font-medium mb-3">
+                    {srv.tagline}
+                  </p>
 
                   <p className="font-grotesk text-xs sm:text-sm text-slate-400 leading-relaxed">
                     {srv.shortDesc}
@@ -222,7 +236,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                     onClick={() => onNavigateTab('services')}
                     className="text-xs font-mono-tech font-semibold text-slate-400 group-hover:text-white inline-flex items-center gap-1 transition-colors"
                   >
-                    <span>Détails</span>
+                    <span>En savoir plus</span>
                     <ChevronRight size={14} />
                   </button>
 
@@ -230,7 +244,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                     onClick={() => onOpenInquire({ name: srv.title })}
                     className="text-[11px] font-mono-tech font-bold uppercase tracking-wider text-[#cbd5e1] hover:underline"
                   >
-                    Devis
+                    Étudier mon projet
                   </button>
                 </div>
               </div>
@@ -243,7 +257,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       {/* Engagements & Transparence (Light Section) */}
       <EngagementsSection />
 
-      {/* 4. Produits en Vedette (Featured Products) */}
+      {/* 4. Produits en Vedette (ÉQUIPEMENTS & SOLUTIONS) */}
       <section className="py-20 lg:py-28 border-b border-[#1e293b] bg-[#070b14] relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
           
@@ -251,18 +265,21 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
             <div>
               <div className="flex items-center gap-2 font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] mb-2">
                 <Package size={16} />
-                <span>ÉQUIPEMENTS & PIÈCES DÉTACHÉES</span>
+                <span>ÉQUIPEMENTS & SOLUTIONS</span>
               </div>
               <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl tracking-tight text-white">
-                Produits en <span className="text-[#cbd5e1]">Vedette.</span>
+                Les équipements <span className="text-[#cbd5e1]">adaptés à vos besoins.</span>
               </h2>
+              <p className="font-grotesk text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+                Découvrez notre sélection d’équipements et de solutions dédiés au froid embarqué, à la climatisation et à l’aménagement des véhicules professionnels.
+              </p>
             </div>
 
             <button
               onClick={() => onNavigateTab('products')}
               className="group inline-flex items-center gap-2 text-sm font-mono-tech font-bold uppercase tracking-wider text-slate-300 hover:text-[#cbd5e1] transition-colors"
             >
-              <span>Accéder au catalogue complet</span>
+              <span>Voir toutes nos solutions</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -270,7 +287,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
           {/* Product Cards Preview */}
           {loadingProducts ? (
             <div className="py-16 text-center font-mono-tech text-slate-500">
-              Chargement des pièces en vedette...
+              Chargement de nos équipements...
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -311,7 +328,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                         onClick={() => onOpenInquire(prod)}
                         className="text-xs font-mono-tech font-bold uppercase tracking-wider text-slate-300 hover:text-white"
                       >
-                        Commander
+                        Demander un devis
                       </button>
                     </div>
                   </div>
@@ -323,17 +340,17 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
         </div>
       </section>
 
-      {/* 5. Call To Action (Contact / Devis - Light Theme) */}
+      {/* 5. Call To Action (BESOIN D’UNE SOLUTION ? - Light Theme) */}
       <section className="py-20 lg:py-24 relative overflow-hidden bg-[#f4f5f7] text-[#0f172a] border-t border-[#e2e8f0]">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10 text-center">
           <span className="inline-block font-mono-tech text-xs tracking-[0.25em] text-[#007aff] uppercase font-bold mb-3 bg-white px-4 py-1.5 rounded border border-[#e2e8f0] shadow-sm">
-            ÉTUDE THERMIQUE & DEVIS IMMÉDIAT
+            BESOIN D’UNE SOLUTION ?
           </span>
           <h2 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase max-w-3xl mx-auto leading-tight text-[#0f172a]">
-            Prêt à Équiper Votre <span className="text-[#007aff]">Flotte</span> ou Véhicule ?
+            Équipons votre véhicule <span className="text-[#007aff]">pour votre activité.</span>
           </h2>
           <p className="font-grotesk text-[#43474e] text-base sm:text-lg max-w-2xl mx-auto mt-5 leading-relaxed">
-            Nos techniciens certifiés analysent vos volumes de chargement, vos plages thermiques (-20°C à +15°C) et vous proposent la configuration frigorifique optimale sous 24h.
+            Vous souhaitez installer un groupe frigorifique, aménager un véhicule isotherme ou entretenir votre système de climatisation ? Parlez-nous de votre véhicule et de vos besoins. Notre équipe vous accompagne dans le choix d’une solution adaptée.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -341,7 +358,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               onClick={() => onOpenInquire()}
               className="px-8 py-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#000613] hover:bg-[#001f3f] text-white shadow-md transition-all duration-200 flex items-center gap-2"
             >
-              <span>Demander un devis en ligne</span>
+              <span>Demander un devis</span>
               <ArrowRight size={16} />
             </button>
 
@@ -350,7 +367,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               className="px-8 py-4 rounded-sm font-mono-tech text-xs font-semibold uppercase tracking-widest bg-white hover:bg-[#fafbfc] border border-[#e2e8f0] hover:border-[#000613] text-[#0f172a] shadow-sm transition-colors flex items-center gap-2"
             >
               <Phone size={15} />
-              <span>Contacter nos ingénieurs</span>
+              <span>Contacter SHYK AUTO</span>
             </button>
           </div>
         </div>

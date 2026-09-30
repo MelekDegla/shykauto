@@ -23,9 +23,9 @@ export const HeritageSection: React.FC = () => {
             <div className="relative z-10 pt-4 sm:pt-6">
               <div className="font-mono-tech text-xs tracking-widest uppercase font-bold mb-2 flex items-center gap-2 text-[#007aff]">
                 <History size={14} className="text-[#007aff]" />
-                <span>DEPUIS 1985</span>
+                <span>QUI SOMMES-NOUS ? • DEPUIS 1985</span>
               </div>
-              <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl tracking-tight text-[#0f172a]">
+              <h2 className="font-montserrat font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#0f172a]">
                 {HERITAGE_TEXT.title}
               </h2>
               <div className="w-20 h-1.5 mt-4 rounded-full bg-[#007aff]" />
