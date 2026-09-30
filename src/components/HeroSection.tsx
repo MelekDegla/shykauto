@@ -23,15 +23,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="w-full h-full object-cover object-right md:object-center opacity-85 filter brightness-95 contrast-105"
         />
         {/* Cinematic Gradient Overlays for optimal readability and depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#000814]/95 via-[#000d1a]/80 to-[#000d1a]/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-[#000814]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#000814]/95 via-[#000d1a]/50 to-[#000d1a]/0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-[#000814]/0" />
       </div>
 
       {/* Blueprint Subgrid overlay subtle effect */}
       <div className="absolute inset-0 blueprint-subgrid opacity-20 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-20 lg:py-28 w-full">
+      <div className="relative z-10 max-w-7xl mx-40 px-6 sm:px-10 py-20 lg:py-28 w-full">
         <div className="max-w-3xl">
           {/* Badge Above Title */}
           <div className="inline-block font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] bg-white/10 px-3.5 py-1 rounded border border-white/20 mb-4 backdrop-blur-sm">
@@ -39,7 +39,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Main Display Headline */}
-          <h1 className="font-montserrat font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white uppercase leading-[1.02] mb-6 sm:mb-8 drop-shadow-sm">
+          <h1 className="font-montserrat font-extrabold text-4xl sm:text-6xl lg:text-6xl tracking-tight text-white uppercase leading-[1.02] mb-6 sm:mb-8 drop-shadow-sm">
             SOLUTIONS FRIGORIFIQUES & CLIMATISATION AUTOMOBILE
           </h1>
 
