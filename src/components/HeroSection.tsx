@@ -31,7 +31,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="absolute inset-0 blueprint-subgrid opacity-20 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-40 px-6 sm:px-10 py-20 lg:py-28 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-20 lg:py-28 w-full">
         <div className="max-w-3xl">
           {/* Badge Above Title */}
           <div className="inline-block font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] bg-white/10 px-3.5 py-1 rounded border border-white/20 mb-4 backdrop-blur-sm">
