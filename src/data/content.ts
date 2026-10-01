@@ -1,13 +1,14 @@
 import { Milestone, TechnicalPart, InventoryItem } from '../types';
 
 export const HERITAGE_TEXT = {
-  badge: "QUI SOMMES-NOUS ? • DEPUIS 1985",
-  title: "Une expertise de plus de 40 ans dans le froid embarqué.",
+  badge: "NOTRE HISTOIRE • DEPUIS 1985",
+  title: "Une expertise construite sur plus de 40 ans.",
   yearWatermark: "1985",
   paragraphs: [
-    "Fondée en 1985 sous le nom de Doucar, SHYK AUTO accompagne depuis plus de quatre décennies les professionnels et les particuliers dans leurs besoins en froid et en climatisation automobile.",
-    "Nous intervenons sur l’ensemble de la chaîne thermique du véhicule : installation de groupes frigorifiques, aménagement de véhicules isothermes, systèmes de climatisation automobile, maintenance et dépannage.",
-    "Notre approche repose sur un savoir-faire technique reconnu, une écoute attentive des besoins de chaque client et des solutions adaptées à chaque type de véhicule et d’utilisation."
+    "L'histoire de SHYK AUTO commence avec Doucar, fondée en 1985, à une époque où la climatisation automobile en Tunisie était encore peu développée.",
+    "Au fil des années, Doucar développe son savoir-faire dans la climatisation automobile et les équipements thermiques. En 2003, cette expérience donne naissance à SHYK AUTO, spécialisée dans les solutions de réfrigération pour véhicules et cabines isothermes.",
+    "Aujourd'hui, SHYK AUTO intervient dans l'installation et l'équipement des véhicules, la climatisation automobile, la réfrigération embarquée ainsi que la fourniture de pièces et équipements adaptés.",
+    "Avec une équipe technique formée et des équipements adaptés aux différentes marques de véhicules, nous accompagnons nos clients de l'étude du besoin jusqu'à l'installation et la mise en service."
   ]
 };
 
@@ -159,23 +160,23 @@ export const INVENTORY_CATALOG: InventoryItem[] = [
 export const ENGAGEMENTS_DATA = [
   {
     icon: "shield-check",
-    title: "Expertise technique",
-    description: "Une expérience de plus de 40 ans dans le froid embarqué et la climatisation automobile."
-  },
-  {
-    icon: "wrench",
-    title: "Solutions sur mesure",
-    description: "Chaque installation est étudiée selon le type de véhicule, son utilisation et les besoins spécifiques de votre activité."
+    title: "QUALITÉ",
+    description: "Des techniciens formés et des équipements adaptés aux différentes marques de véhicules."
   },
   {
     icon: "clock",
-    title: "Réactivité",
-    description: "Un diagnostic et une prise en charge pensés pour limiter l’immobilisation de vos véhicules."
+    title: "DÉLAIS",
+    description: "Une organisation pensée pour réaliser les interventions dans les délais convenus."
   },
   {
     icon: "handshake",
-    title: "Transparence",
-    description: "Des explications claires sur les travaux à réaliser et les solutions proposées, avant toute intervention."
+    title: "SERVICE",
+    description: "De l'étude de votre besoin à l'installation et à la mise en service, notre équipe vous accompagne à chaque étape."
+  },
+  {
+    icon: "eye",
+    title: "TRANSPARENCE",
+    description: "Des devis clairs, une information transparente sur les interventions et un suivi de vos travaux."
   }
 ];
 

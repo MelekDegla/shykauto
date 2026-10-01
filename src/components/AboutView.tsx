@@ -89,12 +89,12 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
                   Notre Mission
                 </h3>
                 <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                  Sécuriser sans faille la chaîne du froid des denrées alimentaires et des produits pharmaceutiques vitaux grâce à une ingénierie thermique de pointe, un calibrage méticuleux et une réactivité d'intervention 24h/24 pour garantir zéro rupture de froid.
+                  Accompagner nos clients dans le choix, l'installation et la maintenance d'équipements de climatisation automobile et de réfrigération embarquée, en garantissant performance thermique et fiabilité.
                 </p>
               </div>
 
               <div className="mt-8 pt-4 border-t border-[#e2e8f0] text-xs font-mono-tech text-slate-500">
-                SÉCURITÉ SANITAIRE CERTIFIÉE ATP & HACCP
+                DISPONIBILITÉ & SAVOIR-FAIRE DEPUIS 1985
               </div>
             </div>
 
@@ -113,21 +113,21 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
                 <ul className="space-y-3 font-grotesk text-sm sm:text-base text-[#43474e]">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-1" />
-                    <span><strong className="text-[#0f172a]">Précision :</strong> Tolérances micrométriques et étanchéité absolue.</span>
+                    <span><strong className="text-[#0f172a]">Qualité :</strong> Techniciens expérimentés et matériels adaptés.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-1" />
-                    <span><strong className="text-[#0f172a]">Durabilité :</strong> Composants OEM d'origine certifiée uniquement.</span>
+                    <span><strong className="text-[#0f172a]">Délais :</strong> Respect des engagements et de la planification.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-1" />
-                    <span><strong className="text-[#0f172a]">Disponibilité :</strong> Support et dépannage rapide pour flottes.</span>
+                    <span><strong className="text-[#0f172a]">Transparence :</strong> Devis détaillés et conseils honnêtes.</span>
                   </li>
                 </ul>
               </div>
 
               <div className="mt-8 pt-4 border-t border-[#e2e8f0] text-xs font-mono-tech text-slate-500">
-                QUALITÉ SUPÉRIEURE & CONFIANCE CLIENT
+                FIABILITÉ & SERVICE DE CONFIANCE
               </div>
             </div>
 

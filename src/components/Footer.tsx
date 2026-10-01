@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
               </li>
               <li>
                 <button onClick={() => setActiveTab('services')} className="hover:text-[#cbd5e1] transition-colors">
-                  Maintenance & dépannage
+                  Maintenance & intervention
                 </button>
               </li>
               <li>

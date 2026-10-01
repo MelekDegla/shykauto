@@ -34,33 +34,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-20 lg:py-28 w-full">
         <div className="max-w-3xl">
           {/* Badge Above Title */}
-          <div className="inline-block font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] bg-white/10 px-3.5 py-1 rounded border border-white/20 mb-4 backdrop-blur-sm">
-            EXPERTISE • FIABILITÉ • RÉACTIVITÉ
+          <div className="inline-block font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] bg-white/10 px-3.5 py-1.5 rounded border border-white/20 mb-4 backdrop-blur-sm">
+            CLIMATISATION AUTOMOBILE & RÉFRIGÉRATION EMBARQUÉE
           </div>
 
           {/* Main Display Headline */}
-          <h1 className="font-montserrat font-extrabold text-4xl sm:text-6xl lg:text-6xl tracking-tight text-white uppercase leading-[1.02] mb-6 sm:mb-8 drop-shadow-sm">
-            SOLUTIONS FRIGORIFIQUES & CLIMATISATION AUTOMOBILE
+          <h1 className="font-montserrat font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white uppercase leading-[1.1] mb-6 sm:mb-8 drop-shadow-sm">
+            Votre spécialiste du froid et de la climatisation depuis 1985.
           </h1>
 
-          {/* Subtitle with vertical accent indicator */}
+          {/* Description text with vertical accent indicator */}
           <div className="flex flex-col gap-3 border-l-4 border-[#cbd5e1] pl-4 sm:pl-6 py-1 max-w-2xl">
-            <h2 className="font-montserrat font-bold text-xl sm:text-2xl text-white">
-              Le froid embarqué, maîtrisé depuis 1985.
-            </h2>
             <p className="font-grotesk text-base sm:text-lg text-slate-200 font-light leading-relaxed">
-              SHYK AUTO accompagne les professionnels et les particuliers dans l’installation, l’aménagement, la maintenance et la réparation de leurs équipements frigorifiques et systèmes de climatisation automobile.
+              De la climatisation automobile aux systèmes de réfrigération pour véhicules et cabines isothermes, SHYK AUTO vous accompagne dans l'installation, l'équipement et la maintenance de vos solutions thermiques.
             </p>
           </div>
 
-          {/* Quick Action Badges / CTAs */}
+          {/* Quick Action Buttons */}
           <div className="mt-10 sm:mt-12 flex flex-wrap items-center gap-4 sm:gap-5">
             <button
               id="hero-inquire-btn"
               onClick={onOpenInquire}
               className="px-8 py-3.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-lg transition-all duration-200 flex items-center gap-2"
             >
-              <span>Demander une étude technique</span>
+              <span>Demander un devis</span>
               <ArrowRight size={15} />
             </button>
 
@@ -80,8 +77,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <Wrench size={18} />
               </div>
               <div>
-                <div className="font-montserrat font-extrabold text-xl text-white">40+ ANS</div>
-                <div className="font-mono-tech text-xs tracking-wider text-slate-300">d’expérience</div>
+                <div className="font-montserrat font-extrabold text-xl text-white">40+</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Années d'expérience</div>
               </div>
             </div>
 
@@ -91,7 +88,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
               <div>
                 <div className="font-montserrat font-extrabold text-xl text-white">12 000+</div>
-                <div className="font-mono-tech text-xs tracking-wider text-slate-300">véhicules équipés</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Véhicules équipés</div>
               </div>
             </div>
 
@@ -100,8 +97,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <ThermometerSnowflake size={18} />
               </div>
               <div>
-                <div className="font-montserrat font-extrabold text-xl text-white">-20°C À +15°C</div>
-                <div className="font-mono-tech text-xs tracking-wider text-slate-300">solutions de température contrôlée</div>
+                <div className="font-montserrat font-extrabold text-xl text-white">1985</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Début de notre histoire</div>
               </div>
             </div>
           </div>

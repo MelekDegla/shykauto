@@ -26,11 +26,11 @@ export const InventorySection: React.FC<InventorySectionProps> = ({ onSelectItem
   };
 
   const categories = [
-    { id: 'all', label: 'Tous les Produits' },
-    { id: 'Pièces de climatisation auto', label: 'Pièces Climatisation Auto' },
-    { id: 'Kits frigorifiques', label: 'Kits Frigorifiques' },
-    { id: 'Matériel pour cabines isothermes', label: 'Cabines Isothermes' },
-    { id: 'Accessoires véhicules', label: 'Accessoires Véhicules' },
+    { id: 'all', label: 'Tous les Équipements' },
+    { id: 'Groupes frigorifiques', label: 'Groupes Frigorifiques' },
+    { id: 'Systèmes de climatisation', label: 'Systèmes de Climatisation' },
+    { id: 'Équipements de réfrigération', label: 'Équipements de Réfrigération' },
+    { id: 'Pièces & accessoires', label: 'Pièces & Accessoires' },
   ];
 
   const filteredProducts = products.filter((item) => {
