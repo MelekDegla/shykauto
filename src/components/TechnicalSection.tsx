@@ -35,7 +35,7 @@ export const TechnicalSection: React.FC = () => {
 
             {/* Description */}
             <p className="font-grotesk text-base sm:text-lg text-slate-300 leading-relaxed font-light">
-              Notre équipe est composée d'experts frigoristes certifiés. Partenaires de confiance de WEBASTO et DIAVIA, nous garantissons des interventions et calibrages d'une précision micrométrique.
+              Notre équipe est composée de techniciens supérieurs formés en froid automobile. Distributeur officiel de WEBASTO, nous garantissons des interventions et calibrages de précision.
             </p>
 
             {/* Divider */}
@@ -69,7 +69,7 @@ export const TechnicalSection: React.FC = () => {
                   </h3>
                 </div>
                 <p className="font-grotesk text-xs sm:text-sm text-slate-400 leading-normal">
-                  Intégration de circuits frigorifiques certifiés normes ATP et FRC.
+                  Intégration professionnelle de circuits frigorifiques, installation soignée en atelier et mise en service avec essais thermiques.
                 </p>
               </div>
             </div>

@@ -16,13 +16,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
         <div className="absolute inset-0 blueprint-grid opacity-25 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
           <span className="font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] mb-2 inline-block">
-            QUI SOMMES-NOUS
+            NOTRE HISTOIRE
           </span>
           <h1 className="font-montserrat font-black text-4xl sm:text-6xl tracking-tight uppercase text-white">
-            À Propos de <span className="text-[#007aff]">Shyk</span><span className="text-[#cbd5e1]">Auto.</span>
+            À Propos de <span className="text-[#007aff]">Doucar</span> <span className="text-white">&</span> <span className="text-[#cbd5e1]">SHYK AUTO</span>
           </h1>
           <p className="font-grotesk text-slate-300 text-base sm:text-xl max-w-3xl mt-4 font-light leading-relaxed">
-            Depuis 1985, plus de 40 ans d'expérience dans l'installation, l'aménagement, la maintenance et la réparation d'équipements frigorifiques et systèmes de climatisation automobile en Tunisie.
+            Une expertise développée depuis 1985 avec DOUCAR, pionnier de la climatisation automobile en Tunisie. En 2003, cette expérience donne naissance à SHYK AUTO, spécialisée dans la réfrigération des cabines isothermes pour véhicules.
           </p>
         </div>
       </section>
@@ -42,13 +42,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="font-mono-tech text-xs tracking-[0.2em] text-[#007aff] uppercase font-bold">
-              ORIENTATIONS STRATÉGIQUES
+              ORIENTATIONS
             </span>
             <h2 className="font-montserrat font-extrabold text-3xl sm:text-5xl tracking-tight mt-2 text-[#0f172a]">
-              Vision, Mission & <span className="text-[#007aff]">Valeurs.</span>
+              Vision, Mission <span className="text-[#007aff]">& Valeurs.</span>
             </h2>
             <p className="font-grotesk text-sm sm:text-base text-[#43474e] mt-3">
-              Les piliers fondamentaux qui guident chacune de nos interventions et notre développement technologique.
+              Les piliers qui guident chacune de nos interventions.
             </p>
           </div>
 

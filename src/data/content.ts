@@ -1,47 +1,47 @@
 import { Milestone, TechnicalPart, InventoryItem } from '../types';
 
 export const HERITAGE_TEXT = {
-  badge: "NOTRE HISTOIRE • DEPUIS 1985",
-  title: "Une expertise construite sur plus de 40 ans.",
+  badge: "NOTRE HISTOIRE • DEPUIS 1985 AVEC DOUCAR",
+  title: "Une expertise dans la climatisation automobile depuis 1985.",
   yearWatermark: "1985",
   paragraphs: [
-    "L'histoire de SHYK AUTO commence avec Doucar, fondée en 1985, à une époque où la climatisation automobile en Tunisie était encore peu développée.",
-    "Au fil des années, Doucar développe son savoir-faire dans la climatisation automobile et les équipements thermiques. En 2003, cette expérience donne naissance à SHYK AUTO, spécialisée dans les solutions de réfrigération pour véhicules et cabines isothermes.",
-    "Aujourd'hui, SHYK AUTO intervient dans l'installation et l'équipement des véhicules, la climatisation automobile, la réfrigération embarquée ainsi que la fourniture de pièces et équipements adaptés.",
-    "Avec une équipe technique formée et des équipements adaptés aux différentes marques de véhicules, nous accompagnons nos clients de l'étude du besoin jusqu'à l'installation et la mise en service."
+    "\u00c0 une \u00e9poque o\u00f9 la climatisation automobile \u00e9tait encore peu d\u00e9velopp\u00e9e dans les pays du tiers monde, DOUCAR, partenaire officiel de DIAVIA-WEBASTO, premier sp\u00e9cialiste de l'\u00e9quipement automobile en deuxi\u00e8me monte, a \u00e9t\u00e9 l'une des premi\u00e8res soci\u00e9t\u00e9s \u00e0 permettre aux Tunisiens d'acc\u00e9der \u00e0 la climatisation automobile.",
+    "Pionni\u00e8re dans ce domaine depuis 1985, DOUCAR n'a cess\u00e9 de d\u00e9velopper son savoir-faire afin d'am\u00e9liorer la satisfaction de ses clients. Au fil des ann\u00e9es, son exp\u00e9rience et son d\u00e9veloppement ont permis la naissance de SHYK-AUTO en 2003, une filiale commerciale sp\u00e9cialis\u00e9e dans la r\u00e9frig\u00e9ration des cabines isothermes pour v\u00e9hicules.",
+    "SHYK-AUTO est aujourd'hui repr\u00e9sentant exclusif de la marque WEBASTO. Nos techniciens sont form\u00e9s pour intervenir sur diff\u00e9rentes marques de v\u00e9hicules avec un outillage adapt\u00e9. Nous disposons, en stock ou sur commande, des pi\u00e8ces n\u00e9cessaires \u00e0 nos interventions.",
+    "Nous travaillons avec de grands \u00e9quipementiers tels que DELPHI, DIAVIA et WEBASTO afin de proposer des pi\u00e8ces de qualit\u00e9 \u00e9quivalente \u00e0 l'origine."
   ]
 };
 
 export const MILESTONES: Milestone[] = [
   {
     year: "1985",
-    title: "Fondation de Doucar",
-    description: "Création des premiers ateliers spécialisés dans la climatisation automobile et les caisses isothermes à Tunis.",
+    title: "Fondation de DOUCAR",
+    description: "Cr\u00e9ation de DOUCAR, partenaire officiel de DIAVIA-WEBASTO, premier sp\u00e9cialiste de l'\u00e9quipement automobile en deuxi\u00e8me monte en Tunisie.",
     tag: "ORIGIN"
   },
   {
     year: "1998",
-    title: "Partenariat WEBASTO",
-    description: "Agrément officiel et déploiement des unités de climatisation auxiliaires et chauffages autonomes de haute ingénierie.",
-    tag: "PARTNERSHIP"
-  },
-  {
-    year: "2008",
-    title: "Certification DIAVIA",
-    description: "Intégration des circuits thermodynamiques intégrés pour véhicules utilitaires légers et transports médicaux.",
+    title: "D\u00e9veloppement du savoir-faire",
+    description: "DOUCAR \u00e9tend ses comp\u00e9tences \u00e0 la r\u00e9frig\u00e9ration embarqu\u00e9e et aux cabines isothermes pour v\u00e9hicules utilitaires.",
     tag: "EXPANSION"
   },
   {
-    year: "2018",
-    title: "Transition SHYK-AUTO",
-    description: "Modernisation des bancs d'essai numériques, télémétrie de chaîne du froid et automatisation de pointe.",
-    tag: "PRECISION"
+    year: "2003",
+    title: "Naissance de SHYK-AUTO",
+    description: "L'exp\u00e9rience accumul\u00e9e donne naissance \u00e0 SHYK-AUTO, filiale commerciale sp\u00e9cialis\u00e9e dans la r\u00e9frig\u00e9ration des cabines isothermes pour v\u00e9hicules.",
+    tag: "FOUNDATION"
   },
   {
-    year: "2026",
-    title: "Systèmes Électriques Zéro Émission",
-    description: "Solutions frigorifiques autonomes 48V/380V pour flottes de livraison urbaine décarbonée.",
-    tag: "INNOVATION"
+    year: "2010",
+    title: "Repr\u00e9sentant exclusif WEBASTO",
+    description: "SHYK-AUTO devient repr\u00e9sentant exclusif de la marque WEBASTO, distributeur officiel pour la Tunisie.",
+    tag: "PARTNERSHIP"
+  },
+  {
+    year: "Aujourd'hui",
+    title: "\u00c9quipe technique & gamme compl\u00e8te",
+    description: "SHYK-AUTO propose la climatisation, la r\u00e9frig\u00e9ration, le chauffage auxiliaire, les pi\u00e8ces et la maintenance, avec des techniciens form\u00e9s et un stock de pi\u00e8ces adapt\u00e9es.",
+    tag: "TODAY"
   }
 ];
 
@@ -160,23 +160,28 @@ export const INVENTORY_CATALOG: InventoryItem[] = [
 export const ENGAGEMENTS_DATA = [
   {
     icon: "shield-check",
-    title: "QUALITÉ",
-    description: "Des techniciens formés et des équipements adaptés aux différentes marques de véhicules."
+    title: "QUALIT\u00c9",
+    description: "Des techniciens sup\u00e9rieurs form\u00e9s en froid automobile et des \u00e9quipements adapt\u00e9s aux diff\u00e9rentes marques de v\u00e9hicules."
   },
   {
     icon: "clock",
-    title: "DÉLAIS",
-    description: "Une organisation pensée pour réaliser les interventions dans les délais convenus."
+    title: "D\u00c9LAIS",
+    description: "Une organisation pens\u00e9e pour r\u00e9aliser les interventions dans les d\u00e9lais convenus."
   },
   {
     icon: "handshake",
     title: "SERVICE",
-    description: "De l'étude de votre besoin à l'installation et à la mise en service, notre équipe vous accompagne à chaque étape."
+    description: "De l'\u00e9tude de votre besoin \u00e0 l'installation et \u00e0 la mise en service, notre \u00e9quipe vous accompagne \u00e0 chaque \u00e9tape."
   },
   {
-    icon: "eye",
-    title: "TRANSPARENCE",
-    description: "Des devis clairs, une information transparente sur les interventions et un suivi de vos travaux."
+    icon: "shield-check",
+    title: "ISO 9001",
+    description: "Une d\u00e9marche qualit\u00e9 certifi\u00e9e selon la norme ISO 9001."
+  },
+  {
+    icon: "shield-check",
+    title: "CONFORMIT\u00c9 ATP",
+    description: "Des solutions conformes aux exigences ATP pour les applications concern\u00e9es."
   }
 ];
 

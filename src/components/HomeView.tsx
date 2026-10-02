@@ -54,30 +54,38 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       number: '03',
       title: 'CONGÉLATION',
       icon: <Snowflake size={26} className="text-[#cbd5e1]" />,
-      shortDesc: 'Solutions frigorifiques destinées aux applications nécessitant des températures négatives, avec des équipements pouvant atteindre environ -20 °C selon les modèles.',
+      shortDesc: 'Solutions frigorifiques destinées aux applications nécessitant des températures négatives, avec des équipements pouvant atteindre environ -20 °C selon les modèles.',
+    },
+    {
+      id: 'chauffage',
+      number: '04',
+      title: 'CHAUFFAGE AUXILIAIRE',
+      icon: <Cpu size={26} className="text-orange-400" />,
+      shortDesc: 'Solutions de chauffage auxiliaire pour les véhicules, distribuées avec le savoir-faire WEBASTO.',
     },
     {
       id: 'parts',
-      number: '04',
+      number: '05',
       title: 'PIÈCES & ÉQUIPEMENTS',
       icon: <Package size={26} className="text-[#cbd5e1]" />,
       shortDesc: 'Pièces de rechange et équipements pour les systèmes de climatisation et de réfrigération, disponibles en stock ou sur commande selon les besoins.',
     },
     {
       id: 'installation',
-      number: '05',
+      number: '06',
       title: 'INSTALLATION & MISE EN SERVICE',
       icon: <Settings size={26} className="text-emerald-400" />,
       shortDesc: 'Étude du besoin, installation des équipements, mise en service et accompagnement dans leur utilisation.',
     },
     {
       id: 'maintenance',
-      number: '06',
+      number: '07',
       title: 'MAINTENANCE & INTERVENTION',
       icon: <Wrench size={26} className="text-amber-400" />,
       shortDesc: 'Diagnostic, entretien et intervention sur les équipements afin de préserver leur bon fonctionnement.',
     },
   ];
+
 
   const vehicleCategories = [
     {
@@ -126,19 +134,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               </h2>
 
               <p className="font-grotesk text-base sm:text-lg text-[#43474e] leading-relaxed">
-                L'histoire de <strong className="text-[#0f172a]">SHYK AUTO</strong> commence avec Doucar, fondée en 1985, à une époque où la climatisation automobile en Tunisie était encore peu développée.
+                À une époque où la climatisation automobile était encore peu développée dans les pays du tiers monde, <strong className="text-[#0f172a]">DOUCAR</strong>, partenaire officiel de DIAVIA-WEBASTO, premier spécialiste de l'équipement automobile en deuxième monte, a été l'une des premières sociétés à permettre aux Tunisiens d'accéder à la climatisation automobile.
               </p>
 
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Au fil des années, Doucar développe son savoir-faire dans la climatisation automobile et les équipements thermiques. En 2003, cette expérience donne naissance à SHYK AUTO, spécialisée dans les solutions de réfrigération pour véhicules et cabines isothermes.
+                Pionnière dans ce domaine depuis 1985, DOUCAR n'a cessé de développer son savoir-faire afin d'améliorer la satisfaction de ses clients. Au fil des années, son expérience et son développement ont permis la naissance de <strong className="text-[#0f172a]">SHYK-AUTO en 2003</strong>, une filiale commerciale spécialisée dans la réfrigération des cabines isothermes pour véhicules.
               </p>
 
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Aujourd'hui, SHYK AUTO intervient dans l'installation et l'équipement des véhicules, la climatisation automobile, la réfrigération embarquée ainsi que la fourniture de pièces et équipements adaptés.
+                SHYK-AUTO est aujourd'hui <strong className="text-[#0f172a]">représentant exclusif de la marque WEBASTO</strong>. Nos techniciens sont formés pour intervenir sur différentes marques de véhicules avec un outillage adapté. Nous disposons, en stock ou sur commande, des pièces nécessaires à nos interventions.
               </p>
 
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Avec une équipe technique formée et des équipements adaptés aux différentes marques de véhicules, nous accompagnons nos clients de l'étude du besoin jusqu'à l'installation et la mise en service.
+                Nous travaillons avec de grands équipementiers tels que <strong className="text-[#0f172a]">DELPHI, DIAVIA et WEBASTO</strong> afin de proposer des pièces de qualité équivalente à l'origine.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
@@ -159,36 +167,43 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               </div>
             </div>
 
-            {/* Right Column: Chiffres Clés */}
             <div className="lg:col-span-5">
               <div className="p-8 rounded-sm border border-[#e2e8f0] bg-white shadow-sm relative overflow-hidden">
                 {/* Top Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007aff] via-sky-400 to-[#000613]" />
                 
                 <h3 className="font-montserrat font-bold text-xl text-[#0f172a] mb-6 flex items-center justify-between">
-                  <span>CHIFFRES CLÉS</span>
+                  <span>REPÈRES CLÉS</span>
                 </h3>
 
                 <div className="grid grid-cols-1 gap-6">
                   <div className="border-b border-[#e2e8f0] pb-4">
-                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">40+</div>
-                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Années d'expérience</div>
+                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">1985</div>
+                    <div className="text-xs font-mono-tech text-[#007aff] font-bold uppercase tracking-wider mt-1">Fondation de DOUCAR</div>
+                    <div className="text-xs font-grotesk text-[#43474e] mt-1">Pionnier de la climatisation automobile en Tunisie.</div>
                   </div>
 
                   <div className="border-b border-[#e2e8f0] pb-4">
-                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#007aff]">12 000+</div>
-                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Véhicules équipés</div>
+                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">2003</div>
+                    <div className="text-xs font-mono-tech text-[#007aff] font-bold uppercase tracking-wider mt-1">Naissance de SHYK AUTO</div>
+                    <div className="text-xs font-grotesk text-[#43474e] mt-1">Filiale spécialisée dans la réfrigération des cabines isothermes.</div>
                   </div>
 
                   <div className="pt-2">
-                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">1985</div>
-                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Début de notre histoire</div>
+                    <div className="font-montserrat font-black text-3xl sm:text-4xl text-[#0f172a]">40+</div>
+                    <div className="text-xs font-mono-tech text-[#0f172a] font-bold uppercase tracking-wider mt-1">Années d'expérience cumulée</div>
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-[#e2e8f0] flex items-center gap-3 text-xs text-[#43474e]">
-                  <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                  <span>Équipe technique formée & équipements adaptés à votre véhicule.</span>
+                <div className="mt-8 pt-6 border-t border-[#e2e8f0] space-y-2">
+                  <div className="flex items-center gap-3 text-xs text-[#43474e]">
+                    <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
+                    <span><strong className="text-[#0f172a]">ISO 9001</strong> — Démarche qualité certifiée.</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs text-[#43474e]">
+                    <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
+                    <span><strong className="text-[#0f172a]">Conformité ATP</strong> — Pour les applications concernées.</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -310,18 +325,27 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       {/* 5. Partenaires / Marques */}
       <section className="py-16 border-b border-[#1e293b] bg-[#070b14] text-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 text-center">
-          <span className="font-mono-tech text-xs tracking-widest text-[#cbd5e1] uppercase font-bold block mb-4">
+          <span className="font-mono-tech text-xs tracking-widest text-[#cbd5e1] uppercase font-bold block mb-2">
             MARQUES & ÉQUIPEMENTS DE RÉFÉRENCE
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 pt-2">
-            <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
-              WEBASTO
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 pt-4">
+            <div className="text-center">
+              <div className="font-montserrat font-black text-2xl sm:text-3xl text-white tracking-widest">
+                WEBASTO
+              </div>
+              <div className="font-mono-tech text-[10px] text-[#cbd5e1]/70 tracking-widest uppercase mt-1">Représentant exclusif</div>
             </div>
-            <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
-              DIAVIA
+            <div className="text-center">
+              <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
+                DIAVIA
+              </div>
+              <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Partenaire historique</div>
             </div>
-            <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
-              DELPHI
+            <div className="text-center">
+              <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
+                DELPHI
+              </div>
+              <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Équipementier</div>
             </div>
           </div>
         </div>

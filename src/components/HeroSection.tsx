@@ -40,13 +40,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Main Display Headline */}
           <h1 className="font-montserrat font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white uppercase leading-[1.1] mb-6 sm:mb-8 drop-shadow-sm">
-            Votre spécialiste du froid et de la climatisation depuis 1985.
+            Votre spécialiste
+          </h1>
+            <h1 className="font-montserrat font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white uppercase leading-[1.1] mb-6 sm:mb-8 drop-shadow-sm">
+            du froid et de la climatisation depuis 1985.
           </h1>
 
           {/* Description text with vertical accent indicator */}
           <div className="flex flex-col gap-3 border-l-4 border-[#cbd5e1] pl-4 sm:pl-6 py-1 max-w-2xl">
             <p className="font-grotesk text-base sm:text-lg text-slate-200 font-light leading-relaxed">
               De la climatisation automobile aux systèmes de réfrigération pour véhicules et cabines isothermes, SHYK AUTO vous accompagne dans l'installation, l'équipement et la maintenance de vos solutions thermiques.
+            </p>
+            <p className="font-mono-tech text-xs text-[#cbd5e1]/80 tracking-wider">
+              Une expertise développée depuis 1985 avec DOUCAR.
             </p>
           </div>
 
@@ -84,21 +90,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             <div className="flex items-center gap-3">
               <div className="p-2 rounded border bg-white/5 border-white/10 text-[#cbd5e1]">
-                <ShieldCheck size={18} />
+                <ThermometerSnowflake size={18} />
               </div>
               <div>
-                <div className="font-montserrat font-extrabold text-xl text-white">12 000+</div>
-                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Véhicules équipés</div>
+                <div className="font-montserrat font-extrabold text-xl text-white">1985</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Fondation DOUCAR</div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
               <div className="p-2 rounded border bg-white/5 border-white/10 text-[#cbd5e1]">
-                <ThermometerSnowflake size={18} />
+                <ShieldCheck size={18} />
               </div>
               <div>
-                <div className="font-montserrat font-extrabold text-xl text-white">1985</div>
-                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Début de notre histoire</div>
+                <div className="font-montserrat font-extrabold text-xl text-white">2003</div>
+                <div className="font-mono-tech text-xs tracking-wider text-slate-300">Naissance de SHYK AUTO</div>
               </div>
             </div>
           </div>
