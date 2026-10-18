@@ -7,3 +7,11 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  DATABASE_URL = "postgresql://neondb_owner:npg_d9SvnLNGbsR8@ep-fancy-shadow-b52kplou.c-7.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+  DIRECT_URL = "postgresql://neondb_owner:npg_d9SvnLNGbsR8@ep-fancy-shadow-b52kplou.c-7.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+  JWT_SECRET = "shykauto_super_secret_jwt_key_2026_secure"
+
+[context.production.environment]
+  DATABASE_URL = "postgresql://neondb_owner:npg_d9SvnLNGbsR8@ep-fancy-shadow-b52kplou.c-7.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+  DIRECT_URL = "postgresql://neondb_owner:npg_d9SvnLNGbsR8@ep-fancy-shadow-b52kplou.c-7.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+  JWT_SECRET = "shykauto_super_secret_jwt_key_2026_secure"

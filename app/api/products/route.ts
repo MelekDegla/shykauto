@@ -70,13 +70,18 @@ export async function POST(req: NextRequest) {
   const { ProductAvailability } = await import('@prisma/client');
 
   try {
+    const parsedPrice =
+      price !== undefined && price !== null && price !== '' && !isNaN(Number(price))
+        ? Number(price)
+        : null;
+
     const product = await prisma.product.create({
       data: {
         name,
         slug: generatedSlug,
         category,
         description,
-        price: price !== undefined && price !== null ? parseFloat(price) : null,
+        price: parsedPrice,
         availability: availability || ProductAvailability.IN_STOCK,
         images: Array.isArray(images) ? images : images ? [images] : [],
         specs: specs || null,
@@ -97,7 +102,7 @@ export async function POST(req: NextRequest) {
     }
     console.error('Error creating product:', error);
     return NextResponse.json(
-      { success: false, error: 'Database error' },
+      { success: false, error: error?.message || 'Database error' },
       { status: 500 }
     );
   }

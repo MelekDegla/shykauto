@@ -38,6 +38,15 @@ export async function PUT(
   }
 
   try {
+    let parsedPrice: number | null | undefined = undefined;
+    if (body.price !== undefined) {
+      if (body.price === null || body.price === '' || isNaN(Number(body.price))) {
+        parsedPrice = null;
+      } else {
+        parsedPrice = Number(body.price);
+      }
+    }
+
     const updated = await prisma.product.update({
       where: { id: existing.id },
       data: {
@@ -45,7 +54,7 @@ export async function PUT(
         slug: body.slug !== undefined ? body.slug : existing.slug,
         category: body.category !== undefined ? body.category : existing.category,
         description: body.description !== undefined ? body.description : existing.description,
-        price: body.price !== undefined ? (body.price !== null ? parseFloat(body.price) : null) : existing.price,
+        price: parsedPrice !== undefined ? parsedPrice : existing.price,
         availability: body.availability !== undefined ? body.availability : existing.availability,
         images: body.images !== undefined ? (Array.isArray(body.images) ? body.images : [body.images]) : existing.images,
         specs: body.specs !== undefined ? body.specs : existing.specs,
@@ -56,7 +65,7 @@ export async function PUT(
     return NextResponse.json({ success: true, message: 'Product updated successfully', data: updated });
   } catch (error: any) {
     console.error('Error updating product:', error);
-    return NextResponse.json({ success: false, error: 'Database error' }, { status: 500 });
+    return NextResponse.json({ success: false, error: error?.message || 'Database error' }, { status: 500 });
   }
 }
 

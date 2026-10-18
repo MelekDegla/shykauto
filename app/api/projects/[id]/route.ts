@@ -73,7 +73,7 @@ export async function PUT(
       return NextResponse.json({ success: false, error: 'Projet introuvable' }, { status: 404 });
     }
     console.error('Error updating project:', error);
-    return NextResponse.json({ success: false, error: 'Erreur base de données' }, { status: 500 });
+    return NextResponse.json({ success: false, error: error?.message || 'Erreur base de données' }, { status: 500 });
   }
 }
 
@@ -102,6 +102,6 @@ export async function DELETE(
       return NextResponse.json({ success: false, error: 'Projet introuvable' }, { status: 404 });
     }
     console.error('Error deleting project:', error);
-    return NextResponse.json({ success: false, error: 'Erreur base de données' }, { status: 500 });
+    return NextResponse.json({ success: false, error: error?.message || 'Erreur base de données' }, { status: 500 });
   }
 }
