@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminAuth } from '@/lib/auth';
-import {
-  getLocalProducts,
-  createLocalProduct,
-} from '@/lib/localStore';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -15,54 +11,35 @@ export async function GET(req: NextRequest) {
   const limit = parseInt(searchParams.get('limit') || '50', 10);
   const skip = (page - 1) * limit;
 
-  try {
-    const { prisma } = await import('@/lib/prisma');
-    const { ProductAvailability } = await import('@prisma/client');
+  const { prisma } = await import('@/lib/prisma');
+  const { ProductAvailability } = await import('@prisma/client');
 
-    const where: any = {};
-    if (category) where.category = { equals: category, mode: 'insensitive' };
-    if (availability && Object.values(ProductAvailability).includes(availability as any)) {
-      where.availability = availability;
-    }
-    if (featured != null) where.featured = featured === 'true';
-    if (search) {
-      where.OR = [
-        { name: { contains: search, mode: 'insensitive' } },
-        { description: { contains: search, mode: 'insensitive' } },
-        { category: { contains: search, mode: 'insensitive' } },
-      ];
-    }
-
-    const [products, total] = await Promise.all([
-      prisma.product.findMany({ where, orderBy: { createdAt: 'desc' }, skip, take: limit }),
-      prisma.product.count({ where }),
-    ]);
-
-    return NextResponse.json({
-      success: true,
-      count: products.length,
-      total,
-      page,
-      totalPages: Math.ceil(total / limit),
-      data: products,
-    });
-  } catch (error: any) {
-    console.warn('DB unavailable for GET /api/products — using localStore:', error?.message);
+  const where: any = {};
+  if (category) where.category = { equals: category, mode: 'insensitive' };
+  if (availability && Object.values(ProductAvailability).includes(availability as any)) {
+    where.availability = availability;
+  }
+  if (featured != null) where.featured = featured === 'true';
+  if (search) {
+    where.OR = [
+      { name: { contains: search, mode: 'insensitive' } },
+      { description: { contains: search, mode: 'insensitive' } },
+      { category: { contains: search, mode: 'insensitive' } },
+    ];
   }
 
-  // Fallback to localStore
-  const featuredBool = featured != null ? featured === 'true' : undefined;
-  const all = getLocalProducts({ category, search, availability, featured: featuredBool });
-  const paginated = all.slice(skip, skip + limit);
+  const [products, total] = await Promise.all([
+    prisma.product.findMany({ where, orderBy: { createdAt: 'desc' }, skip, take: limit }),
+    prisma.product.count({ where }),
+  ]);
 
   return NextResponse.json({
     success: true,
-    count: paginated.length,
-    total: all.length,
+    count: products.length,
+    total,
     page,
-    totalPages: Math.ceil(all.length / limit),
-    data: paginated,
-    _fallback: true,
+    totalPages: Math.ceil(total / limit),
+    data: products,
   });
 }
 
@@ -89,10 +66,10 @@ export async function POST(req: NextRequest) {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)+/g, '');
 
-  try {
-    const { prisma } = await import('@/lib/prisma');
-    const { ProductAvailability } = await import('@prisma/client');
+  const { prisma } = await import('@/lib/prisma');
+  const { ProductAvailability } = await import('@prisma/client');
 
+  try {
     const product = await prisma.product.create({
       data: {
         name,
@@ -112,31 +89,16 @@ export async function POST(req: NextRequest) {
       { status: 201 }
     );
   } catch (error: any) {
-    console.warn('DB unavailable for POST /api/products — using localStore:', error?.message);
-
     if (error.code === 'P2002') {
       return NextResponse.json(
         { success: false, error: 'A product with this slug already exists' },
         { status: 400 }
       );
     }
-
-    // Fallback: persist to localStore
-    const newProduct = createLocalProduct({
-      name,
-      slug: generatedSlug,
-      category,
-      description,
-      price: price !== undefined && price !== null ? Number(price) : undefined,
-      availability: availability || 'IN_STOCK',
-      images: Array.isArray(images) ? images : images ? [images] : [],
-      specs: specs || null,
-      featured: Boolean(featured),
-    });
-
+    console.error('Error creating product:', error);
     return NextResponse.json(
-      { success: true, message: 'Product created (local)', data: newProduct, _fallback: true },
-      { status: 201 }
+      { success: false, error: 'Database error' },
+      { status: 500 }
     );
   }
 }
