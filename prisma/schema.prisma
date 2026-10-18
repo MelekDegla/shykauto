@@ -16,6 +16,7 @@ enum Role {
 enum ProjectType {
   BEFORE_AFTER
   SIMPLE
+  CAROUSEL
 }
 
 enum ProductAvailability {

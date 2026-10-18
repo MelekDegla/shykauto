@@ -59,20 +59,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Quick Action Buttons */}
           <div className="mt-10 sm:mt-12 flex flex-wrap items-center gap-4 sm:gap-5">
             <button
-              id="hero-inquire-btn"
-              onClick={onOpenInquire}
-              className="px-8 py-3.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-lg transition-all duration-200 flex items-center gap-2"
-            >
-              <span>Demander un devis</span>
-              <ArrowRight size={15} />
-            </button>
-
-            <button
               id="hero-explore-btn"
               onClick={onExploreServices}
-              className="px-7 py-3.5 rounded-sm font-mono-tech text-xs font-semibold uppercase tracking-widest bg-[#000613]/80 hover:bg-[#001f3f] border border-white/20 hover:border-[#cbd5e1] text-white transition-all duration-200 backdrop-blur-sm"
+              className="px-8 py-3.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-lg transition-all duration-200 flex items-center gap-2"
             >
-              Découvrir nos solutions
+              <span>Découvrir nos solutions</span>
+              <ArrowRight size={15} />
             </button>
           </div>
 

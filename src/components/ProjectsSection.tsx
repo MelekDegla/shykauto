@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ProjectItem } from '../types';
 import { api } from '../services/api';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
+import { ImageCarousel } from './ImageCarousel';
 import { Layers, Calendar, User, ArrowRight, Eye } from 'lucide-react';
 import { COLORS } from '../constants/theme';
 
@@ -32,11 +33,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenInquire 
     { id: 'Camions frigorifiques', label: 'Camions Frigorifiques' },
     { id: 'Installations clim auto', label: 'Climatisation Automobile' },
     { id: 'BEFORE_AFTER', label: 'Avant / Après 🔄' },
+    { id: 'CAROUSEL', label: 'Carrousels 📸' },
   ];
 
   const filteredProjects = projects.filter((p) => {
     if (activeCategory === 'all') return true;
     if (activeCategory === 'BEFORE_AFTER') return p.type === 'BEFORE_AFTER';
+    if (activeCategory === 'CAROUSEL') {
+      return p.type === 'CAROUSEL' || (Array.isArray(p.images) && p.images.length > 1);
+    }
     return p.category.toLowerCase() === activeCategory.toLowerCase();
   });
 
@@ -65,11 +70,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenInquire 
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-sm font-mono-tech text-xs uppercase tracking-wider transition-all duration-200 border ${
-                activeCategory === cat.id
-                  ? 'bg-[#000613] text-white font-bold border-[#000613] shadow-md'
-                  : 'bg-white text-[#43474e] border-[#e2e8f0] hover:border-[#000613] hover:text-[#000613]'
-              }`}
+              className={`px-4 py-2 rounded-sm font-mono-tech text-xs uppercase tracking-wider transition-all duration-200 border ${activeCategory === cat.id
+                ? 'bg-[#000613] text-white font-bold border-[#000613] shadow-md'
+                : 'bg-white text-[#43474e] border-[#e2e8f0] hover:border-[#000613] hover:text-[#000613]'
+                }`}
             >
               {cat.label}
             </button>
@@ -88,83 +92,83 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenInquire 
         ) : (
           /* Projects Grid */
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                className="group rounded-sm overflow-hidden border border-[#e2e8f0] hover:border-[#000613] bg-white transition-all duration-300 flex flex-col shadow-sm hover:shadow-xl"
-              >
-                {/* Media Container: Before/After Slider or Image Gallery */}
-                <div className="p-4 bg-[#f4f5f7] border-b border-[#e2e8f0]">
-                  {project.type === 'BEFORE_AFTER' && project.beforeImage && project.afterImage ? (
-                    <BeforeAfterSlider
-                      beforeImage={project.beforeImage}
-                      afterImage={project.afterImage}
-                    />
-                  ) : (
-                    <div className="relative h-[320px] sm:h-[400px] rounded overflow-hidden group">
-                      <img
-                        src={project.images?.[0] || 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=80'}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            {filteredProjects.map((project) => {
+              const isBeforeAfter = project.type === 'BEFORE_AFTER' && project.beforeImage && project.afterImage;
+              const isCarousel = project.type === 'CAROUSEL' || (Array.isArray(project.images) && project.images.length > 1);
+
+              return (
+                <div
+                  key={project.id}
+                  className="group rounded-sm overflow-hidden border border-[#e2e8f0] hover:border-[#000613] bg-white transition-all duration-300 flex flex-col shadow-sm hover:shadow-xl"
+                >
+                  {/* Media Container: Before/After Slider or Carousel or Single Image */}
+                  <div className="p-4 bg-[#f4f5f7] border-b border-[#e2e8f0]">
+                    {isBeforeAfter ? (
+                      <BeforeAfterSlider
+                        beforeImage={project.beforeImage!}
+                        afterImage={project.afterImage!}
                       />
-                      <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded text-[11px] font-mono-tech text-[#cbd5e1] border border-[#cbd5e1]/30 uppercase font-bold tracking-wider">
-                        {project.category}
+                    ) : isCarousel ? (
+                      <ImageCarousel
+                        images={project.images}
+                        alt={project.title}
+                        categoryBadge={project.category}
+                      />
+                    ) : (
+                      <div className="relative h-[320px] sm:h-[400px] rounded overflow-hidden group">
+                        <img
+                          src={project.images?.[0] || 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=80'}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded text-[11px] font-mono-tech text-[#cbd5e1] border border-[#cbd5e1]/30 uppercase font-bold tracking-wider">
+                          {project.category}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Project Details */}
-                <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech text-[#64748b] mb-3">
-                      {project.client && (
-                        <span className="flex items-center gap-1.5 text-[#007aff] font-semibold">
-                          <User size={14} />
-                          {project.client}
-                        </span>
-                      )}
-                      {project.date && (
-                        <span className="flex items-center gap-1.5">
-                          <Calendar size={14} />
-                          {project.date}
-                        </span>
-                      )}
-                      <span className="px-2 py-0.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#0f172a] uppercase font-semibold">
-                        {project.type === 'BEFORE_AFTER' ? 'Transformation Avant/Après' : 'Projet Clé en Main'}
-                      </span>
-                    </div>
-
-                    <h3 className="font-montserrat font-bold text-xl sm:text-2xl mb-3 tracking-tight text-[#0f172a] group-hover:text-[#007aff] transition-colors">
-                      {project.title}
-                    </h3>
-
-                    <p className="font-grotesk text-sm sm:text-base text-[#43474e] line-clamp-3 mb-6 leading-relaxed">
-                      {project.description}
-                    </p>
+                    )}
                   </div>
 
-                  {/* Actions */}
-                  <div className="flex items-center justify-between pt-4 border-t border-[#e2e8f0]">
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="inline-flex items-center gap-2 font-mono-tech text-xs text-[#007aff] font-bold uppercase hover:underline"
-                    >
-                      <Eye size={16} />
-                      <span>Voir Détails</span>
-                    </button>
+                  {/* Project Details */}
+                  <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech text-[#64748b] mb-3">
+                        {project.client && (
+                          <span className="flex items-center gap-1.5 text-[#007aff] font-semibold">
+                            <User size={14} />
+                            {project.client}
+                          </span>
+                        )}
+                        {project.date && (
+                          <span className="flex items-center gap-1.5">
+                            <Calendar size={14} />
+                            {project.date}
+                          </span>
+                        )}
+                      </div>
 
-                    <button
-                      onClick={() => onOpenInquire(project.title)}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase transition-all shadow-sm"
-                    >
-                      <span>Devis Similaire</span>
-                      <ArrowRight size={14} />
-                    </button>
+                      <h3 className="font-montserrat font-bold text-xl sm:text-2xl mb-3 tracking-tight text-[#0f172a] group-hover:text-[#007aff] transition-colors">
+                        {project.title}
+                      </h3>
+
+                      <p className="font-grotesk text-sm sm:text-base text-[#43474e] line-clamp-3 mb-6 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="pt-4 border-t border-[#e2e8f0]">
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="w-full py-2.5 rounded-sm bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 shadow-sm"
+                      >
+                        <Eye size={16} />
+                        <span>Voir Détails</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
@@ -181,7 +185,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenInquire 
             </button>
 
             <span className="font-mono-tech text-xs text-[#cbd5e1] uppercase tracking-widest font-semibold">
-              {selectedProject.category} • {selectedProject.type}
+              {selectedProject.category} • {
+                selectedProject.type === 'BEFORE_AFTER'
+                  ? 'AVANT / APRÈS'
+                  : (selectedProject.type === 'CAROUSEL' || (Array.isArray(selectedProject.images) && selectedProject.images.length > 1))
+                    ? 'CARROUSEL PHOTOS'
+                    : 'GALERIE'
+              }
             </span>
 
             <h3 className="font-montserrat font-extrabold text-2xl sm:text-3xl my-3 text-white">
@@ -193,6 +203,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenInquire 
                 <BeforeAfterSlider
                   beforeImage={selectedProject.beforeImage}
                   afterImage={selectedProject.afterImage}
+                />
+              ) : (selectedProject.type === 'CAROUSEL' || (Array.isArray(selectedProject.images) && selectedProject.images.length > 1)) ? (
+                <ImageCarousel
+                  images={selectedProject.images}
+                  alt={selectedProject.title}
+                  showThumbnails={true}
+                  aspectRatioClass="h-[340px] sm:h-[420px]"
                 />
               ) : (
                 <img
@@ -221,19 +238,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenInquire 
             <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="px-5 py-2.5 rounded bg-[#16233f] hover:bg-[#1e2f55] text-slate-300 font-mono-tech text-xs font-bold uppercase"
-              >
-                Fermer
-              </button>
-              <button
-                onClick={() => {
-                  const title = selectedProject.title;
-                  setSelectedProject(null);
-                  onOpenInquire(title);
-                }}
                 className="px-6 py-2.5 rounded bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] font-mono-tech text-xs font-bold uppercase shadow-lg"
               >
-                Demander un Devis Pour ce Projet
+                Fermer
               </button>
             </div>
           </div>

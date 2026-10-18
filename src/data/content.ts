@@ -5,9 +5,9 @@ export const HERITAGE_TEXT = {
   title: "Une expertise dans la climatisation automobile depuis 1985.",
   yearWatermark: "1985",
   paragraphs: [
-    "\u00c0 une \u00e9poque o\u00f9 la climatisation automobile \u00e9tait encore peu d\u00e9velopp\u00e9e dans les pays du tiers monde, DOUCAR, partenaire officiel de DIAVIA-WEBASTO, premier sp\u00e9cialiste de l'\u00e9quipement automobile en deuxi\u00e8me monte, a \u00e9t\u00e9 l'une des premi\u00e8res soci\u00e9t\u00e9s \u00e0 permettre aux Tunisiens d'acc\u00e9der \u00e0 la climatisation automobile.",
-    "Pionni\u00e8re dans ce domaine depuis 1985, DOUCAR n'a cess\u00e9 de d\u00e9velopper son savoir-faire afin d'am\u00e9liorer la satisfaction de ses clients. Au fil des ann\u00e9es, son exp\u00e9rience et son d\u00e9veloppement ont permis la naissance de SHYK-AUTO en 2003, une filiale commerciale sp\u00e9cialis\u00e9e dans la r\u00e9frig\u00e9ration des cabines isothermes pour v\u00e9hicules.",
-    "SHYK-AUTO est aujourd'hui repr\u00e9sentant exclusif de la marque WEBASTO. Nos techniciens sont form\u00e9s pour intervenir sur diff\u00e9rentes marques de v\u00e9hicules avec un outillage adapt\u00e9. Nous disposons, en stock ou sur commande, des pi\u00e8ces n\u00e9cessaires \u00e0 nos interventions.",
+    "\u00c0 une \u00e9poque o\u00f9 la climatisation automobile \u00e9tait encore peu d\u00e9velopp\u00e9e dans le Maghreb arabe, DOUCAR s'est impos\u00e9e en Tunisie comme le distributeur et installateur officiel en deuxi\u00e8me monte des syst\u00e8mes de climatisation pour v\u00e9hicules de la marque DIAVIA.",
+    "Pionni\u00e8re dans ce domaine depuis 1985, DOUCAR n'a cess\u00e9 de d\u00e9velopper son savoir-faire afin d'am\u00e9liorer la satisfaction de ses clients. Au fil des ann\u00e9es, son exp\u00e9rience et sa croissance ont permis la naissance, en 2003, de SHYK-AUTO, une filiale commerciale sp\u00e9cialis\u00e9e dans la r\u00e9frig\u00e9ration des cabines isothermes pour v\u00e9hicules.",
+    "Aujourd'hui, SHYK-AUTO est le repr\u00e9sentant officiel de la marque WEBASTO. Nos techniciens sont form\u00e9s pour intervenir sur diff\u00e9rentes marques de v\u00e9hicules avec un outillage adapt\u00e9. Nous disposons, en stock ou sur commande, des pi\u00e8ces de rechange de qualit\u00e9 \u00e9quivalente \u00e0 l'origine, n\u00e9cessaires \u00e0 l'ensemble de nos interventions.",
     "Nous travaillons avec de grands \u00e9quipementiers tels que DELPHI, DIAVIA et WEBASTO afin de proposer des pi\u00e8ces de qualit\u00e9 \u00e9quivalente \u00e0 l'origine."
   ]
 };
@@ -161,7 +161,7 @@ export const ENGAGEMENTS_DATA = [
   {
     icon: "shield-check",
     title: "QUALIT\u00c9",
-    description: "Des techniciens sup\u00e9rieurs form\u00e9s en froid automobile et des \u00e9quipements adapt\u00e9s aux diff\u00e9rentes marques de v\u00e9hicules."
+    description: "Des techniciens sup\u00e9rieurs form\u00e9s en froid automobile et des \u00e9quipements adapt\u00e9s \u00e0 chaque intervention."
   },
   {
     icon: "clock",
@@ -176,12 +176,12 @@ export const ENGAGEMENTS_DATA = [
   {
     icon: "shield-check",
     title: "ISO 9001",
-    description: "Une d\u00e9marche qualit\u00e9 certifi\u00e9e selon la norme ISO 9001."
+    description: "Les \u00e9quipements que nous distribuons sont issus de marques reconnues dont les processus de fabrication r\u00e9pondent aux exigences de la norme ISO 9001."
   },
   {
     icon: "shield-check",
     title: "CONFORMIT\u00c9 ATP",
-    description: "Des solutions conformes aux exigences ATP pour les applications concern\u00e9es."
+    description: "Les groupes frigorifiques et \u00e9quipements que nous installons sont conformes aux exigences ATP pour le transport de marchandises p\u00e9rissables."
   }
 ];
 
@@ -193,25 +193,49 @@ export const TRANSPARENCE_DATA = {
   },
   suivi: {
     label: "SUIVI",
-    description: "Documentation complète des réparations et suivi rigoureux de l'entretien de vos systèmes."
+    description: "Documentation complète des garanties et suivi rigoureux de l'entretien de vos systèmes."
   }
 };
 
 export const CONTACT_DATA = {
   phone: {
     label: "PHONE",
-    value: "+216 71 000 000",
-    href: "tel:+21671000000"
+    value: "+216 99 321 543",
+    display: "+216 99 321 543 / 20 555 593 / 56 321 570",
+    all: "+216 99 321 543 / 20555593 / 56321570",
+    numbers: [
+      { label: "+216 99 321 543", href: "tel:+21699321543" },
+      { label: "+216 20 555 593", href: "tel:+21620555593" },
+      { label: "+216 56 321 570", href: "tel:+21656321570" },
+    ],
+    href: "tel:+21699321543"
   },
   email: {
     label: "EMAIL",
-    value: "contact@shykauto.com",
-    href: "mailto:contact@shykauto.com"
+    value: "soniadhoukar@shykauto.tn",
+    href: "mailto:soniadhoukar@shykauto.tn"
   },
   location: {
     label: "LOCATION",
-    primary: "Zone Industrielle, Tunis",
-    secondary: "Tunisia",
-    coordinates: "36.8065° N, 10.1815° E"
+    primary: "1 Rue Méditerranée, Ezzahra",
+    secondary: "2034 Ben Arous, Tunisie",
+    full: "1 Rue Mediterranee Ezzahra 2034 Ben Arous tunisie",
+    coordinates: "36.7386° N, 10.2913° E"
+  },
+  filiale: {
+    name: "Climatisation Auto — Pièces et Accessoires Auto",
+    role: "Filiale de SHYK AUTO",
+    address: "16, Route de Tunis 4011 - H.Sousse",
+    phoneFixe: "(+216) 73 361 817",
+    phoneFixeHref: "tel:+21673361817",
+    fax: "(+216) 73 361 518",
+    mobiles: [
+      { label: "(+216) 51 230 400", href: "tel:+21651230400" },
+      { label: "(+216) 92 311 027", href: "tel:+21692311027" },
+    ],
+    email: "commercial@autoclimdoucar.com",
+    emailHref: "mailto:commercial@autoclimdoucar.com",
+    mapsUrl: "https://maps.app.goo.gl/4FMCBNB37aKPTUbu6",
+    coordinates: "35.8654° N, 10.5910° E"
   }
 };

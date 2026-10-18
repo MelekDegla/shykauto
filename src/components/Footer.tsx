@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
   return (
     <footer className="text-white pt-20 pb-16 border-t border-[#1e293b] bg-[#05080f]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        
+
         {/* Top Section: Brand Name & Intro */}
         <div className="mb-14">
           <button
@@ -37,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
 
         {/* Middle Section: Links & Directory */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-[#1e293b]">
-          
+
           {/* Navigation Column */}
           <div className="space-y-4">
             <div className="font-mono-tech text-xs font-bold uppercase tracking-widest text-slate-400">
@@ -136,29 +136,63 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="font-grotesk text-xs text-slate-300 space-y-1.5">
-                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase">Atelier / Siège</div>
-                <p>Zone Industrielle de Tunis</p>
-                <p>Tunisie</p>
-                
-                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Horaires</div>
-                <p>Lundi – Vendredi : 08h00 – 18h00</p>
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase">Siège & Atelier (Tunis)</div>
+                <p>1 Rue Méditerranée, Ezzahra</p>
+                <p>2034 Ben Arous, Tunisie</p>
+                <div className="space-y-0.5 font-mono-tech text-xs pt-1">
+                  <div>
+                    <a href="tel:+21699321543" className="text-[#cbd5e1] font-bold hover:text-white transition-colors">
+                      +216 99 321 543
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-slate-400">
+                    <a href="tel:+21620555593" className="hover:text-[#cbd5e1] transition-colors">
+                      +216 20 555 593
+                    </a>
+                    <span>/</span>
+                    <a href="tel:+21656321570" className="hover:text-[#cbd5e1] transition-colors">
+                      56 321 570
+                    </a>
+                  </div>
+                </div>
+
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Filiale (Sousse)</div>
+                <p className="text-slate-200 font-semibold">Climatisation Auto</p>
+                <p>16, Route de Tunis 4011 - H.Sousse</p>
+                <div className="space-y-0.5 font-mono-tech text-xs pt-0.5">
+                  <a href="tel:+21673361817" className="text-[#cbd5e1] font-bold hover:text-white transition-colors block">
+                    Tél : (+216) 73 361 817
+                  </a>
+                  <div className="text-slate-400 flex items-center gap-1.5">
+                    <span>Mob :</span>
+                    <a href="tel:+21651230400" className="hover:text-[#cbd5e1] transition-colors">
+                      (+216) 51 230 400
+                    </a>
+                    <span>/</span>
+                    <a href="tel:+21692311027" className="hover:text-[#cbd5e1] transition-colors">
+                      92 311 027
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              <div className="font-grotesk text-xs text-slate-300 space-y-1.5">
-                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase">Téléphone</div>
-                <p className="font-mono-tech text-[#cbd5e1] font-bold text-sm">+216 71 000 000</p>
-
-                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Email</div>
-                <p className="font-mono-tech text-[#cbd5e1]">contact@shykauto.com</p>
-                
-                <div className="pt-2">
-                  <button
-                    onClick={onOpenInquire}
-                    className="px-5 py-2.5 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-wider transition-all bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] shadow-md"
-                  >
-                    Demander un devis
-                  </button>
+              <div className="font-grotesk text-xs text-slate-300 space-y-2">
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase">Courriels Directs</div>
+                <div>
+                  <span className="font-mono-tech text-[10px] text-slate-400 uppercase block">Siège :</span>
+                  <a href="mailto:soniadhoukar@shykauto.tn" className="font-mono-tech text-[#cbd5e1] hover:text-white">
+                    soniadhoukar@shykauto.tn
+                  </a>
                 </div>
+                <div>
+                  <span className="font-mono-tech text-[10px] text-slate-400 uppercase block">Filiale Sousse :</span>
+                  <a href="mailto:commercial@autoclimdoucar.com" className="font-mono-tech text-[#cbd5e1] hover:text-white break-all">
+                    commercial@autoclimdoucar.com
+                  </a>
+                </div>
+
+                <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Horaires d'Ouverture</div>
+                <p>Lundi – Vendredi : 08h00 – 18h00</p>
               </div>
             </div>
           </div>

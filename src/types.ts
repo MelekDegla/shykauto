@@ -50,7 +50,7 @@ export interface ProjectItem {
   title: string;
   slug: string;
   category: string;
-  type: 'BEFORE_AFTER' | 'SIMPLE';
+  type: 'BEFORE_AFTER' | 'SIMPLE' | 'CAROUSEL';
   description: string;
   client?: string | null;
   images?: string[];
@@ -76,7 +76,7 @@ export interface MessageItem {
 export interface AdminStats {
   products: { total: number };
   services: { total: number };
-  projects: { total: number; beforeAfter: number; simple: number };
+  projects: { total: number; beforeAfter: number; simple: number; carousel?: number };
   messages: { total: number; unread: number };
   visits: { total: number };
   recentMessages?: MessageItem[];

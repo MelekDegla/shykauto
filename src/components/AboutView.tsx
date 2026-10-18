@@ -53,7 +53,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
+
             {/* Card 1: Vision */}
             <div className="p-8 sm:p-10 rounded-sm border border-[#e2e8f0] bg-white hover:border-[#000613] shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
               <div>
@@ -134,7 +134,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
           </div>
 
           {/* Quick CTA */}
-          <div className="mt-16 text-center">
+          {/** <div className="mt-16 text-center">
             <button
               onClick={onOpenInquire}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#000613] hover:bg-[#001f3f] text-white shadow-md transition-all"
@@ -142,7 +142,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenInquire }) => {
               <span>Demander une étude personnalisée</span>
               <ArrowRight size={15} />
             </button>
-          </div>
+          </div> */}
 
         </div>
       </section>

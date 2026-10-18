@@ -1,26 +1,13 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Copy, Check, Send, MessageSquare, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Copy, Check, MessageSquare, Clock, Building2, Printer, Smartphone, ExternalLink, Navigation } from 'lucide-react';
 import { CONTACT_DATA } from '../data/content';
-import { api } from '../services/api';
-import { COLORS } from '../constants/theme';
 
 interface ContactSectionProps {
-  onOpenInquire: () => void;
+  onOpenInquire?: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInquire }) => {
+export const ContactSection: React.FC<ContactSectionProps> = () => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
-  const [formSuccess, setFormSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    vehicleType: '',
-    serviceType: 'Climatisation Automobile',
-    message: '',
-  });
 
   const handleCopy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -28,309 +15,360 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInquire })
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.fullName || !formData.email || !formData.message) return;
-
-    setSubmitting(true);
-    const res = await api.sendContactMessage(formData);
-    setSubmitting(false);
-
-    if (res.success) {
-      setFormSuccess(true);
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        companyName: '',
-        vehicleType: '',
-        serviceType: 'Climatisation Automobile',
-        message: '',
-      });
-      setTimeout(() => setFormSuccess(false), 6000);
-    }
-  };
-
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-[#f4f5f7] text-[#0f172a] border-b border-[#e2e8f0]">
+    <section id="contact" className="py-20 lg:py-28 bg-[#f4f5f7] text-[#0f172a] border-b border-[#e2e8f0]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
 
-        {/* Header */}
+        {/* Section Header */}
         <div className="mb-14 sm:mb-16">
-          <span className="font-mono-tech text-xs tracking-widest text-[#007aff] uppercase font-bold">
-            CONTACT & DEMANDE DE DEVIS
-          </span>
-          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl tracking-tight mt-1 text-[#0f172a]">
-            Contactez <span className="text-[#007aff]">Shyk</span><span className="text-[#000]">Auto.</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#007aff]/10 text-[#007aff] border border-[#007aff]/20 font-mono-tech text-xs uppercase font-bold tracking-widest mb-3">
+            <Building2 size={14} />
+            <span>RÉSEAU SHYK AUTO & CONTACTS</span>
+          </div>
+          <h2 className="font-montserrat font-extrabold text-4xl sm:text-5xl tracking-tight text-[#0f172a]">
+            Nos <span className="text-[#007aff]">Implantations</span> & Contacts.
           </h2>
-          <p className="font-grotesk text-[#43474e] max-w-xl mt-2 text-base">
-            Notre équipe technique est à votre écoute pour toute demande d'intervention, devis personnalisé ou conseil frigorifique.
+          <p className="font-grotesk text-[#43474e] max-w-2xl mt-3 text-base sm:text-lg leading-relaxed">
+            Nos ateliers et comptoirs techniques vous accueillent pour tous vos besoins en climatisation automobile, équipement de véhicules frigorifiques et fourniture de pièces détachées.
           </p>
         </div>
 
-        {/* Top Cards: Phone, Email, WhatsApp */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+        {/* Two Locations Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
 
-          {/* Card 1: Phone */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] p-8 rounded-sm shadow-sm transition-all flex flex-col justify-between group">
+          {/* Location 1: Siège Social & Atelier Central (Ezzahra - Ben Arous) */}
+          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] rounded-sm p-7 sm:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between">
             <div>
-              <div className="text-[#007aff] mb-6 p-3 bg-[#f4f5f7] border border-[#e2e8f0] rounded w-fit">
-                <Phone size={24} />
+              {/* Badge & Title */}
+              <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                <span className="font-mono-tech text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded bg-[#000613] text-white">
+                  Siège Social & Atelier Central
+                </span>
+                <span className="font-mono-tech text-xs text-[#007aff] font-semibold flex items-center gap-1">
+                  <Clock size={13} />
+                  Lun - Ven : 08h - 18h
+                </span>
               </div>
-              <div className="font-mono-tech text-xs tracking-wider text-[#64748b] font-bold uppercase mb-2">
-                TÉLÉPHONE DIRECT
-              </div>
-              <a
-                href={CONTACT_DATA.phone.href}
-                className="font-montserrat font-bold text-2xl text-[#0f172a] hover:text-[#007aff] transition-colors block"
-              >
-                {CONTACT_DATA.phone.value}
-              </a>
-            </div>
 
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
-              <span className="font-mono-tech text-xs text-[#64748b] flex items-center gap-1">
-                <Clock size={12} />
-                Lun - Sam : 08h-18h
-              </span>
-              <button
-                onClick={() => handleCopy(CONTACT_DATA.phone.value, 'phone')}
-                className="text-xs font-mono-tech text-[#007aff] flex items-center gap-1 font-bold"
-              >
-                {copiedKey === 'phone' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
-                <span>{copiedKey === 'phone' ? 'Copié' : 'Copier'}</span>
-              </button>
-            </div>
-          </div>
+              <h3 className="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#0f172a] mb-2">
+                SHYK AUTO
+              </h3>
+              <p className="font-grotesk text-sm text-[#43474e] mb-6 leading-relaxed">
+                Centre technique spécialisé dans l'installation de groupes de froid, aménagement isotherme, maintenance et recharge de climatisation automobile.
+              </p>
 
-          {/* Card 2: Email */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-[#007aff] p-8 rounded-sm shadow-sm transition-all flex flex-col justify-between group">
-            <div>
-              <div className="text-[#007aff] mb-6 p-3 bg-[#f4f5f7] border border-[#e2e8f0] rounded w-fit">
-                <Mail size={24} />
-              </div>
-              <div className="font-mono-tech text-xs tracking-wider text-[#64748b] font-bold uppercase mb-2">
-                COURRIEL TECHNIQUE
-              </div>
-              <a
-                href={CONTACT_DATA.email.href}
-                className="font-montserrat font-bold text-xl text-[#0f172a] hover:text-[#007aff] transition-colors block break-all"
-              >
-                {CONTACT_DATA.email.value}
-              </a>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
-              <span className="font-mono-tech text-xs text-[#64748b]">Réponse sous 2H</span>
-              <button
-                onClick={() => handleCopy(CONTACT_DATA.email.value, 'email')}
-                className="text-xs font-mono-tech text-[#007aff] flex items-center gap-1 font-bold"
-              >
-                {copiedKey === 'email' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
-                <span>{copiedKey === 'email' ? 'Copié' : 'Copier'}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Card 3: WhatsApp Clickable */}
-          <div className="bg-white border border-[#e2e8f0] hover:border-emerald-500 p-8 rounded-sm shadow-sm transition-all flex flex-col justify-between group">
-            <div>
-              <div className="text-emerald-600 mb-6 p-3 bg-[#f4f5f7] border border-[#e2e8f0] rounded w-fit">
-                <MessageSquare size={24} />
-              </div>
-              <div className="font-mono-tech text-xs tracking-wider text-[#64748b] font-bold uppercase mb-2">
-                WHATSAPP DIRECT
-              </div>
-              <a
-                href="https://wa.me/21671000000?text=Bonjour%20ShykAuto,%20je%20souhaite%20un%20devis"
-                target="_blank"
-                rel="noreferrer"
-                className="font-montserrat font-bold text-2xl text-emerald-600 hover:underline block"
-              >
-                Discuter sur WhatsApp
-              </a>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
-              <span className="font-mono-tech text-xs text-[#64748b]">Support 7j/7</span>
-              <a
-                href="https://wa.me/21671000000"
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs font-mono-tech text-emerald-600 font-bold hover:underline"
-              >
-                Ouvrir WhatsApp →
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Main Grid: Contact Form + Google Maps */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
-          {/* Contact Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-sm border border-[#e2e8f0] shadow-sm">
-            <h3 className="font-montserrat font-extrabold text-2xl text-[#0f172a] mb-2">
-              Envoyer un Message / Demande de Devis
-            </h3>
-            <p className="font-grotesk text-[#43474e] text-sm mb-8">
-              Remplissez les informations ci-dessous, notre équipe vous répondra dans les plus brefs délais.
-            </p>
-
-            {formSuccess && (
-              <div className="mb-6 p-4 bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 rounded font-grotesk text-sm flex items-center gap-2">
-                <Check size={20} className="text-emerald-400" />
-                <span>Votre message a été transmis avec succès à notre équipe !</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-4 font-grotesk">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                    Nom Complet *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Sami Ben Ali"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
-                  />
+              {/* Details List */}
+              <div className="space-y-4 pt-4 border-t border-[#e2e8f0]">
+                {/* Address */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                      Adresse
+                    </div>
+                    <div className="font-grotesk font-semibold text-base text-[#0f172a]">
+                      1 Rue Méditerranée, Ezzahra
+                    </div>
+                    <div className="font-grotesk text-xs text-[#64748b]">
+                      2034 Ben Arous, Tunisie
+                    </div>
+                    <div className="font-mono-tech text-[11px] text-amber-600 mt-1">
+                      GPS : 36.7386° N, 10.2913° E
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                    Adresse Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="contact@societe.tn"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
-                  />
+                {/* Phone Numbers */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <Phone size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                        Téléphones
+                      </div>
+                      <button
+                        onClick={() => handleCopy('+216 99 321 543 / 20555593 / 56321570', 'phone-siege')}
+                        className="text-xs font-mono-tech text-[#007aff] flex items-center gap-1 font-bold hover:underline"
+                        title="Copier les numéros"
+                      >
+                        {copiedKey === 'phone-siege' ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                        <span>{copiedKey === 'phone-siege' ? 'Copié' : 'Copier'}</span>
+                      </button>
+                    </div>
+                    <div className="mt-1 space-y-1">
+                      <div>
+                        <a
+                          href="tel:+21699321543"
+                          className="font-montserrat font-bold text-lg text-[#0f172a] hover:text-[#007aff] transition-colors inline-block"
+                        >
+                          +216 99 321 543
+                        </a>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono-tech text-xs text-[#43474e]">
+                        <a href="tel:+21620555593" className="hover:text-[#007aff] font-semibold transition-colors">
+                          +216 20 555 593
+                        </a>
+                        <span>/</span>
+                        <a href="tel:+21656321570" className="hover:text-[#007aff] font-semibold transition-colors">
+                          +216 56 321 570
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <Mail size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                      Courriel
+                    </div>
+                    <a
+                      href="mailto:soniadhoukar@shykauto.tn"
+                      className="font-grotesk font-semibold text-sm text-[#0f172a] hover:text-[#007aff] transition-colors"
+                    >
+                      soniadhoukar@shykauto.tn
+                    </a>
+                  </div>
+                </div>
+
+                {/* WhatsApp Direct */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-600 shrink-0 mt-0.5">
+                    <MessageSquare size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-emerald-700 font-bold">
+                      WhatsApp Direct
+                    </div>
+                    <a
+                      href="https://wa.me/21699321543?text=Bonjour%20ShykAuto,%20je%20souhaite%20une%20information"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-grotesk font-semibold text-sm text-emerald-600 hover:underline inline-flex items-center gap-1.5"
+                    >
+                      <span>Discuter sur WhatsApp (+216 99 321 543)</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                    Téléphone
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+216 98 000 000"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613] font-mono-tech"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                    Entreprise / Société
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nom de la société"
-                    value={formData.companyName}
-                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                    Type de Véhicule
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="ex. Renault Master / Peugeot Partner"
-                    value={formData.vehicleType}
-                    onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
-                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                    Service Souhaité
-                  </label>
-                  <select
-                    value={formData.serviceType}
-                    onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                    className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] focus:outline-none focus:border-[#000613]"
-                  >
-                    <option value="Climatisation Automobile">Climatisation Automobile</option>
-                    <option value="Installation Frigorifique">Installation Frigorifique Utilitaires</option>
-                    <option value="Transformation Isotherme">Transformation Cabine Isotherme</option>
-                    <option value="Maintenance & Dépannage">Maintenance & Dépannage Rapide</option>
-                    <option value="Achat de Pièces">Achat de Pièces & Équipements</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono-tech font-bold uppercase text-[#43474e] mb-1">
-                  Message / Détails de votre demande *
-                </label>
-                <textarea
-                  rows={4}
-                  required
-                  placeholder="Décrivez votre besoin technique, le volume de caisse, la température requise (+4°C ou -20°C)..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-[#f4f5f7] border border-[#e2e8f0] p-3 rounded text-sm text-[#0f172a] placeholder-slate-400 focus:outline-none focus:border-[#000613]"
+              {/* Map embed */}
+              <div className="mt-6 rounded-sm overflow-hidden border border-[#e2e8f0] shadow-sm h-[240px] bg-[#f4f5f7]">
+                <iframe
+                  title="SHYK AUTO Ezzahra"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.0!2d10.2913369!3d36.7386235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd4987297f33fd%3A0x112c9af1fb31c300!2sShyk%20Auto!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+            </div>
 
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full py-3.5 bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase tracking-widest rounded shadow-sm transition-all flex items-center justify-center gap-2"
+            {/* Bottom Action */}
+            <div className="mt-6 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
+              <a
+                href="https://maps.google.com/?q=Shyk+Auto+Ezzahra"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 font-mono-tech text-xs uppercase font-bold text-[#007aff] hover:underline"
               >
-                <Send size={16} />
-                <span>{submitting ? 'Envoi en cours...' : 'Envoyer la Demande de Devis'}</span>
-              </button>
-            </form>
+                <Navigation size={14} />
+                <span>Ouvrir l'itinéraire Google Maps</span>
+              </a>
+              <span className="font-mono-tech text-xs text-[#64748b]">Grand Tunis</span>
+            </div>
           </div>
 
-          {/* Location & Google Maps (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            <div className="bg-white border border-[#e2e8f0] p-8 rounded-sm text-[#0f172a] shadow-sm">
-              <div className="flex items-center gap-2 text-[#007aff] font-mono-tech text-xs uppercase font-bold mb-3">
-                <MapPin size={16} />
-                <span>NOTRE ATELIER ET SIÈGE SOCIAL</span>
+          {/* Location 2: Filiale Régionale (Hammam Sousse) */}
+          <div className="bg-white border border-[#e2e8f0] hover:border-[#000613] rounded-sm p-7 sm:p-9 shadow-sm transition-all duration-300 flex flex-col justify-between">
+            <div>
+              {/* Badge & Title */}
+              <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                <span className="font-mono-tech text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded bg-[#007aff] text-white">
+                  Filiale de SHYK AUTO
+                </span>
+                <span className="font-mono-tech text-xs text-[#007aff] font-semibold flex items-center gap-1">
+                  <Clock size={13} />
+                  Lun - Ven : 08h - 18h
+                </span>
               </div>
-              <h4 className="font-montserrat font-bold text-xl text-[#0f172a] mb-2">
-                Zone Industrielle, Tunis, Tunisie
-              </h4>
-              <p className="font-grotesk text-[#43474e] text-sm leading-relaxed mb-4">
-                Nos ateliers sont équipés de bancs d'essai thermiques numériques et de stations de charge pour une prise en charge rapide de vos véhicules.
+
+              <h3 className="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#0f172a] mb-1">
+                Climatisation Auto
+              </h3>
+              <div className="font-mono-tech text-xs font-bold uppercase text-[#007aff] tracking-wider mb-2">
+                Pièces et Accessoires Auto
+              </div>
+              <p className="font-grotesk text-sm text-[#43474e] mb-6 leading-relaxed">
+                Comptoir de distribution de composants et accessoires de climatisation automobile (compresseurs, condenseurs, raccords, gaz) et support technique pour la région du Sahel.
               </p>
-              <div className="font-mono-tech text-xs text-amber-600 bg-amber-50 p-3 rounded border border-amber-200">
-                Coordonnées GPS: 36.8065° N, 10.1815° E
+
+              {/* Details List */}
+              <div className="space-y-4 pt-4 border-t border-[#e2e8f0]">
+                {/* Address */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                      Adresse
+                    </div>
+                    <div className="font-grotesk font-semibold text-base text-[#0f172a]">
+                      16, Route de Tunis
+                    </div>
+                    <div className="font-grotesk text-xs text-[#64748b]">
+                      4011 - Hammam Sousse, Tunisie
+                    </div>
+                    <div className="font-mono-tech text-[11px] text-amber-600 mt-1">
+                      GPS : 35.8654° N, 10.5910° E
+                    </div>
+                  </div>
+                </div>
+
+                {/* Telephone Fixe & Fax */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <Phone size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                      Téléphone Fixe & Fax
+                    </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-mono-tech text-[#64748b]">Tél. :</span>
+                        <a
+                          href="tel:+21673361817"
+                          className="font-montserrat font-bold text-base text-[#0f172a] hover:text-[#007aff] transition-colors"
+                        >
+                          (+216) 73 361 817
+                        </a>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-mono-tech text-[#64748b]">
+                        <Printer size={13} />
+                        <span>Fax : (+216) 73 361 518</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobiles */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <Smartphone size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                        Mobiles & Commercial
+                      </div>
+                      <button
+                        onClick={() => handleCopy('(+216) 51 230 400 / (+216) 92 311 027', 'phone-sousse')}
+                        className="text-xs font-mono-tech text-[#007aff] flex items-center gap-1 font-bold hover:underline"
+                        title="Copier les numéros"
+                      >
+                        {copiedKey === 'phone-sousse' ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                        <span>{copiedKey === 'phone-sousse' ? 'Copié' : 'Copier'}</span>
+                      </button>
+                    </div>
+                    <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono-tech text-sm">
+                      <a
+                        href="tel:+21651230400"
+                        className="font-bold text-[#0f172a] hover:text-[#007aff] transition-colors"
+                      >
+                        (+216) 51 230 400
+                      </a>
+                      <span className="text-slate-400">/</span>
+                      <a
+                        href="tel:+21692311027"
+                        className="font-bold text-[#0f172a] hover:text-[#007aff] transition-colors"
+                      >
+                        (+216) 92 311 027
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Commercial */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-[#f4f5f7] border border-[#e2e8f0] text-[#007aff] shrink-0 mt-0.5">
+                    <Mail size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-[#64748b] font-bold">
+                      Courriel Commercial
+                    </div>
+                    <a
+                      href="mailto:commercial@autoclimdoucar.com"
+                      className="font-grotesk font-semibold text-sm text-[#0f172a] hover:text-[#007aff] transition-colors break-all"
+                    >
+                      commercial@autoclimdoucar.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* WhatsApp Direct Sousse */}
+                <div className="flex items-start gap-3">
+                  <div className="p-2.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-600 shrink-0 mt-0.5">
+                    <MessageSquare size={18} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-mono-tech text-[11px] uppercase tracking-wider text-emerald-700 font-bold">
+                      WhatsApp Sousse
+                    </div>
+                    <a
+                      href="https://wa.me/21651230400?text=Bonjour,%20je%20vous%20contacte%20concernant%20des%20pi%C3%A8ces%20auto"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-grotesk font-semibold text-sm text-emerald-600 hover:underline inline-flex items-center gap-1.5"
+                    >
+                      <span>Contacter sur WhatsApp ((+216) 51 230 400)</span>
+                      <ExternalLink size={13} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map embed Sousse (DOUCAR CLIMATISATION AUTO) */}
+              <div className="mt-6 rounded-sm overflow-hidden border border-[#e2e8f0] shadow-sm h-[240px] bg-[#f4f5f7]">
+                <iframe
+                  title="DOUCAR CLIMATISATION AUTO Sousse"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.1352726356983!2d10.5884094!3d35.8653741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd346cbd84f477%3A0x8d2332db8b5ca45!2sDOUCAR%20CLIMATISATION%20AUTO!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
 
-            {/* Google Maps Iframe */}
-            <div className="rounded-sm overflow-hidden border border-[#e2e8f0] shadow-sm h-[340px] bg-[#f4f5f7]">
-              <iframe
-                title="ShykAuto Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102237.49168925828!2d10.1118128!3d36.8065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd337f5e7ef543%3A0xd671924e714a0275!2sTunis%2C%20Tunisia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            {/* Bottom Action */}
+            <div className="mt-6 pt-4 border-t border-[#e2e8f0] flex items-center justify-between">
+              <a
+                href="https://maps.app.goo.gl/4FMCBNB37aKPTUbu6"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 font-mono-tech text-xs uppercase font-bold text-[#007aff] hover:underline"
+              >
+                <Navigation size={14} />
+                <span>Ouvrir l'itinéraire Google Maps</span>
+              </a>
+              <span className="font-mono-tech text-xs text-[#64748b]">Région Sahel</span>
             </div>
           </div>
 

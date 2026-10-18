@@ -10,7 +10,8 @@
     "lint": "npx tsc --noEmit",
     "prisma:generate": "npx prisma generate",
     "prisma:push": "npx prisma db push",
-    "prisma:seed": "npx tsx prisma/seed.ts"
+    "prisma:seed": "npx tsx prisma/seed.ts",
+    "prisma:seed:js": "node prisma/seed.js"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

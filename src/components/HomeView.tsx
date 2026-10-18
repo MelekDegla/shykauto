@@ -4,9 +4,10 @@ import { EngagementsSection } from './EngagementsSection';
 import { ActiveTab, ProductItem } from '../types';
 import { api } from '../services/api';
 import { COLORS } from '../constants/theme';
+import { ImageCarousel } from './ImageCarousel';
 import {
   Wind, Snowflake, ShieldCheck, Wrench, ArrowRight,
-  Package, CheckCircle2, ChevronRight, Phone, Truck, Car, Layers, Settings, Cpu
+  Package, CheckCircle2, ChevronRight, Phone, Truck, Car, Layers, Settings, Cpu, HardHat
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -40,7 +41,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       number: '01',
       title: 'CLIMATISATION AUTOMOBILE',
       icon: <Wind size={26} className="text-[#cbd5e1]" />,
-      shortDesc: 'Installation, entretien et intervention sur les systèmes de climatisation automobile pour véhicules légers et professionnels.',
+      shortDesc: 'Installation, entretien et intervention sur les systèmes de climatisation automobile pour véhicules légers et utilitaires.',
     },
     {
       id: 'frigo',
@@ -75,14 +76,21 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       number: '06',
       title: 'INSTALLATION & MISE EN SERVICE',
       icon: <Settings size={26} className="text-emerald-400" />,
-      shortDesc: 'Étude du besoin, installation des équipements, mise en service et accompagnement dans leur utilisation.',
+      shortDesc: 'Étude du besoin, installation des équipements, mise en service et service après-vente.',
     },
     {
       id: 'maintenance',
       number: '07',
       title: 'MAINTENANCE & INTERVENTION',
       icon: <Wrench size={26} className="text-amber-400" />,
-      shortDesc: 'Diagnostic, entretien et intervention sur les équipements afin de préserver leur bon fonctionnement.',
+      shortDesc: 'Diagnostic, entretien préventif et intervention sur les équipements afin de préserver leur bon fonctionnement et prolonger leur durée de vie.',
+    },
+    {
+      id: 'engins',
+      number: '08',
+      title: 'CLIMATISATION POUR ENGINS',
+      icon: <HardHat size={26} className="text-yellow-400" />,
+      shortDesc: 'Solutions de climatisation adaptées sur mesure pour les engins de chantier et équipements industriels — conception, installation et mise en service selon les contraintes spécifiques de chaque machine.',
     },
   ];
 
@@ -100,13 +108,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
     },
     {
       title: 'Poids lourds',
-      desc: 'Solutions de réfrigération adaptées aux véhicules de transport et aux contraintes des installations de plus grande capacité.',
+      desc: 'Solutions de réfrigération adaptées aux véhicules de transport de marchandises périssables et aux contraintes des installations de plus grande capacité.',
       icon: <Truck size={28} className="text-[#0f172a]" />,
     },
     {
-      title: 'Cabines isothermes',
-      desc: 'Équipements frigorifiques permettant de maintenir une température contrôlée à l\'intérieur des véhicules.',
-      icon: <Layers size={28} className="text-emerald-500" />,
+      title: 'Groupe frigorifique',
+      desc: 'Installation et entretien de groupes frigorifiques pour le maintien d\'une température contrôlée dans les caisses isothermes et les véhicules frigorifiques.',
+      icon: <Snowflake size={28} className="text-emerald-500" />,
     },
   ];
 
@@ -122,7 +130,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       <section className="py-20 lg:py-28 border-b border-[#e2e8f0] bg-[#f4f5f7] text-[#0f172a] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Présentation & Narrative */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded text-xs font-mono-tech font-bold uppercase tracking-wider bg-white text-[#007aff] border border-[#e2e8f0] shadow-sm">
@@ -134,19 +142,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               </h2>
 
               <p className="font-grotesk text-base sm:text-lg text-[#43474e] leading-relaxed">
-                À une époque où la climatisation automobile était encore peu développée dans les pays du tiers monde, <strong className="text-[#0f172a]">DOUCAR</strong>, partenaire officiel de DIAVIA-WEBASTO, premier spécialiste de l'équipement automobile en deuxième monte, a été l'une des premières sociétés à permettre aux Tunisiens d'accéder à la climatisation automobile.
+                À une époque où la climatisation automobile était encore peu développée dans le Maghreb arabe, <strong className="text-[#0f172a]">DOUCAR</strong> s'est imposée en Tunisie comme le distributeur et installateur officiel en deuxième monte des systèmes de climatisation pour véhicules de la marque <strong className="text-[#0f172a]">DIAVIA</strong>.
               </p>
 
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Pionnière dans ce domaine depuis 1985, DOUCAR n'a cessé de développer son savoir-faire afin d'améliorer la satisfaction de ses clients. Au fil des années, son expérience et son développement ont permis la naissance de <strong className="text-[#0f172a]">SHYK-AUTO en 2003</strong>, une filiale commerciale spécialisée dans la réfrigération des cabines isothermes pour véhicules.
+                Pionnière dans ce domaine depuis 1985, DOUCAR n'a cessé de développer son savoir-faire afin d'améliorer la satisfaction de ses clients. Au fil des années, son expérience et sa croissance ont permis la naissance, en 2003, de <strong className="text-[#0f172a]">SHYK-AUTO</strong>, une filiale commerciale spécialisée dans la réfrigération des cabines isothermes pour véhicules.
               </p>
 
               <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                SHYK-AUTO est aujourd'hui <strong className="text-[#0f172a]">représentant exclusif de la marque WEBASTO</strong>. Nos techniciens sont formés pour intervenir sur différentes marques de véhicules avec un outillage adapté. Nous disposons, en stock ou sur commande, des pièces nécessaires à nos interventions.
-              </p>
-
-              <p className="font-grotesk text-sm sm:text-base text-[#43474e] leading-relaxed">
-                Nous travaillons avec de grands équipementiers tels que <strong className="text-[#0f172a]">DELPHI, DIAVIA et WEBASTO</strong> afin de proposer des pièces de qualité équivalente à l'origine.
+                Aujourd'hui, SHYK-AUTO est le <strong className="text-[#0f172a]">représentant officiel de la marque WEBASTO</strong>. Nos techniciens sont formés pour intervenir sur différentes marques de véhicules avec un outillage adapté. Nous disposons, en stock ou sur commande, des pièces de rechange de qualité équivalente à l'origine, nécessaires à l'ensemble de nos interventions.
               </p>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
@@ -157,13 +161,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                   <span>Découvrir notre histoire</span>
                   <ArrowRight size={14} />
                 </button>
-
-                <button
-                  onClick={() => onOpenInquire()}
-                  className="px-6 py-3.5 rounded-sm text-xs font-mono-tech font-semibold uppercase tracking-widest bg-white border border-[#e2e8f0] hover:border-[#000613] text-[#0f172a] shadow-sm transition-colors"
-                >
-                  Demander un devis
-                </button>
               </div>
             </div>
 
@@ -171,7 +168,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               <div className="p-8 rounded-sm border border-[#e2e8f0] bg-white shadow-sm relative overflow-hidden">
                 {/* Top Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#007aff] via-sky-400 to-[#000613]" />
-                
+
                 <h3 className="font-montserrat font-bold text-xl text-[#0f172a] mb-6 flex items-center justify-between">
                   <span>REPÈRES CLÉS</span>
                 </h3>
@@ -198,11 +195,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                 <div className="mt-8 pt-6 border-t border-[#e2e8f0] space-y-2">
                   <div className="flex items-center gap-3 text-xs text-[#43474e]">
                     <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                    <span><strong className="text-[#0f172a]">ISO 9001</strong> — Démarche qualité certifiée.</span>
+                    <span><strong className="text-[#0f172a]">ISO 9001</strong> — Équipements issus de marques dont la fabrication répond aux exigences ISO 9001.</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs text-[#43474e]">
                     <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                    <span><strong className="text-[#0f172a]">Conformité ATP</strong> — Pour les applications concernées.</span>
+                    <span><strong className="text-[#0f172a]">Conformité ATP</strong> — Groupes frigorifiques conformes ATP pour le transport de marchandises périssables.</span>
                   </div>
                 </div>
               </div>
@@ -215,7 +212,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       {/* 3. Domaines d'Expertise (6 Services Cards) */}
       <section className="py-20 lg:py-28 border-b border-[#1e293b] bg-[#090f1d] relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
-          
+
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div>
               <span className="font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1]">
@@ -225,7 +222,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                 Des solutions thermiques <span className="text-[#cbd5e1]">pour chaque besoin.</span>
               </h2>
             </div>
-            
+
             <button
               onClick={() => onNavigateTab('services')}
               className="group inline-flex items-center gap-2 text-sm font-mono-tech font-bold uppercase tracking-wider text-slate-300 hover:text-[#cbd5e1] transition-colors"
@@ -268,13 +265,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                   >
                     <span>En savoir plus</span>
                     <ChevronRight size={14} />
-                  </button>
-
-                  <button
-                    onClick={() => onOpenInquire({ name: srv.title })}
-                    className="text-[11px] font-mono-tech font-bold uppercase tracking-wider text-[#cbd5e1] hover:underline"
-                  >
-                    Demander un devis
                   </button>
                 </div>
               </div>
@@ -328,7 +318,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
           <span className="font-mono-tech text-xs tracking-widest text-[#cbd5e1] uppercase font-bold block mb-2">
             MARQUES & ÉQUIPEMENTS DE RÉFÉRENCE
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16 pt-4">
             <div className="text-center">
               <div className="font-montserrat font-black text-2xl sm:text-3xl text-white tracking-widest">
                 WEBASTO
@@ -343,7 +333,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
             </div>
             <div className="text-center">
               <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
+                SANDEN
+              </div>
+              <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Équipementier</div>
+            </div>
+            <div className="text-center">
+              <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
                 DELPHI
+              </div>
+              <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Équipementier</div>
+            </div>
+            <div className="text-center">
+              <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
+                SPAL
               </div>
               <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Équipementier</div>
             </div>
@@ -357,7 +359,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
       {/* 7. Produits en Vedette (ÉQUIPEMENTS & SOLUTIONS) */}
       <section className="py-20 lg:py-28 border-b border-[#1e293b] bg-[#070b14] relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
-          
+
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div>
               <div className="flex items-center gap-2 font-mono-tech text-xs tracking-widest uppercase font-bold text-[#cbd5e1] mb-2">
@@ -393,18 +395,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                   key={prod.id}
                   className="bg-[#0d1527] border border-[#1e293b] hover:border-[#cbd5e1]/60 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                 >
-                  <div className="relative aspect-video sm:aspect-square bg-slate-900 overflow-hidden">
-                    <img
-                      src={prod.images[0] || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80'}
-                      alt={prod.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-2 left-2">
-                      <span className="bg-[#070b14]/90 text-white text-[10px] font-mono-tech px-2 py-0.5 rounded tracking-widest uppercase border border-slate-700">
-                        {prod.category}
-                      </span>
-                    </div>
-                  </div>
+                  <ImageCarousel
+                    images={Array.isArray(prod.images) ? prod.images : prod.images ? [prod.images] : []}
+                    alt={prod.name}
+                    aspectRatioClass="aspect-video sm:aspect-square w-full"
+                    categoryBadge={prod.category}
+                  />
 
                   <div className="p-5 flex-grow flex flex-col justify-between">
                     <div>
@@ -420,13 +416,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
                       <div className="font-mono-tech font-bold text-sm text-[#cbd5e1]">
                         {prod.price ? `${prod.price.toLocaleString()} TND` : 'Sur devis'}
                       </div>
-
-                      <button
-                        onClick={() => onOpenInquire(prod)}
-                        className="text-xs font-mono-tech font-bold uppercase tracking-wider text-slate-300 hover:text-white"
-                      >
-                        Demander un devis
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -452,19 +441,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => onOpenInquire()}
-              className="px-8 py-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#000613] hover:bg-[#001f3f] text-white shadow-md transition-all duration-200 flex items-center gap-2"
-            >
-              <span>Demander un devis</span>
-              <ArrowRight size={16} />
-            </button>
-
-            <button
               onClick={() => onNavigateTab('contact')}
-              className="px-8 py-4 rounded-sm font-mono-tech text-xs font-semibold uppercase tracking-widest bg-white hover:bg-[#fafbfc] border border-[#e2e8f0] hover:border-[#000613] text-[#0f172a] shadow-sm transition-colors flex items-center gap-2"
+              className="px-8 py-4 rounded-sm font-mono-tech text-xs font-bold uppercase tracking-widest bg-[#000613] hover:bg-[#001f3f] text-white shadow-md transition-all duration-200 flex items-center gap-2"
             >
               <Phone size={15} />
               <span>Contacter SHYK AUTO</span>
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>

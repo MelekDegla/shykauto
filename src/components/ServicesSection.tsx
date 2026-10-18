@@ -110,18 +110,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquire 
                 </div>
 
                 {/* Card Actions */}
-                <div className="px-8 pb-8 pt-2 flex items-center gap-4">
+                <div className="px-8 pb-8 pt-2">
                   <button
                     onClick={() => setSelectedService(service)}
-                    className="flex-1 py-3 px-4 rounded bg-[#f4f5f7] hover:bg-[#e2e8f0] text-[#43474e] hover:text-[#0f172a] border border-[#e2e8f0] font-mono-tech text-xs font-bold uppercase transition-all text-center"
+                    className="w-full py-3 px-4 rounded bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
-                    En savoir plus
-                  </button>
-                  <button
-                    onClick={() => onOpenInquire(service.title)}
-                    className="flex-1 py-3 px-4 rounded bg-[#000613] hover:bg-[#001f3f] text-white font-mono-tech text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 shadow-sm"
-                  >
-                    <span>Demander un devis</span>
+                    <span>En savoir plus</span>
                     <ArrowRight size={14} />
                   </button>
                 </div>
@@ -185,20 +179,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquire 
             <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
               <button
                 onClick={() => setSelectedService(null)}
-                className="px-5 py-2.5 rounded bg-[#16233f] hover:bg-[#1e2f55] text-slate-300 font-mono-tech text-xs font-bold uppercase"
+                className="px-6 py-2.5 rounded bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] font-mono-tech text-xs font-bold uppercase shadow-lg"
               >
                 Fermer
-              </button>
-              <button
-                onClick={() => {
-                  const title = selectedService.title;
-                  setSelectedService(null);
-                  onOpenInquire(title);
-                }}
-                className="px-6 py-2.5 rounded bg-[#cbd5e1] hover:bg-[#e2e8f0] text-[#000613] font-mono-tech text-xs font-bold uppercase shadow-lg flex items-center gap-2"
-              >
-                <span>Demander un Devis pour ce Service</span>
-                <ArrowRight size={14} />
               </button>
             </div>
           </div>
