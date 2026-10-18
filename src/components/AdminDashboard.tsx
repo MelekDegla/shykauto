@@ -440,8 +440,12 @@ export const AdminDashboard: React.FC = () => {
                     <button
                       onClick={async () => {
                         if (confirm('Supprimer ce produit ?')) {
-                          await api.deleteProduct(prod.id);
-                          loadAllAdminData();
+                          try {
+                            await api.deleteProduct(prod.id);
+                            loadAllAdminData();
+                          } catch (err: any) {
+                            alert('Erreur: ' + (err.message || 'Échec de la suppression'));
+                          }
                         }
                       }}
                       className="p-2 bg-rose-500/20 text-rose-400 hover:bg-rose-500/40 rounded"
@@ -494,8 +498,12 @@ export const AdminDashboard: React.FC = () => {
                     <button
                       onClick={async () => {
                         if (confirm('Supprimer ce service ?')) {
-                          await api.deleteService(serv.id);
-                          loadAllAdminData();
+                          try {
+                            await api.deleteService(serv.id);
+                            loadAllAdminData();
+                          } catch (err: any) {
+                            alert('Erreur: ' + (err.message || 'Échec de la suppression'));
+                          }
                         }
                       }}
                       className="p-2 bg-rose-500/20 text-rose-400 hover:bg-rose-500/40 rounded"
@@ -633,8 +641,12 @@ export const AdminDashboard: React.FC = () => {
                         <button
                           onClick={async () => {
                             if (confirm('Supprimer cette réalisation ?')) {
-                              await api.deleteProject(proj.id);
-                              loadAllAdminData();
+                              try {
+                                await api.deleteProject(proj.id);
+                                loadAllAdminData();
+                              } catch (err: any) {
+                                alert('Erreur: ' + (err.message || 'Échec de la suppression'));
+                              }
                             }
                           }}
                           className="p-2 bg-rose-500/20 text-rose-400 hover:bg-rose-500/40 rounded"
@@ -1114,13 +1126,17 @@ export const AdminDashboard: React.FC = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  if (editingItem.id) {
-                    await api.updateProduct(editingItem.id, editingItem);
-                  } else {
-                    await api.createProduct(editingItem);
+                  try {
+                    if (editingItem.id) {
+                      await api.updateProduct(editingItem.id, editingItem);
+                    } else {
+                      await api.createProduct(editingItem);
+                    }
+                    setIsModalOpen(false);
+                    loadAllAdminData();
+                  } catch (err: any) {
+                    alert('Erreur: ' + (err.message || 'Échec de la sauvegarde'));
                   }
-                  setIsModalOpen(false);
-                  loadAllAdminData();
                 }}
                 className="space-y-4 font-grotesk"
               >
@@ -1454,13 +1470,17 @@ export const AdminDashboard: React.FC = () => {
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
-                  if (editingItem.id) {
-                    await api.updateService(editingItem.id, editingItem);
-                  } else {
-                    await api.createService(editingItem);
+                  try {
+                    if (editingItem.id) {
+                      await api.updateService(editingItem.id, editingItem);
+                    } else {
+                      await api.createService(editingItem);
+                    }
+                    setIsModalOpen(false);
+                    loadAllAdminData();
+                  } catch (err: any) {
+                    alert('Erreur: ' + (err.message || 'Échec de la sauvegarde'));
                   }
-                  setIsModalOpen(false);
-                  loadAllAdminData();
                 }}
                 className="space-y-4 font-grotesk"
               >
@@ -1625,13 +1645,17 @@ export const AdminDashboard: React.FC = () => {
                       return;
                     }
                   }
-                  if (editingItem.id) {
-                    await api.updateProject(editingItem.id, editingItem);
-                  } else {
-                    await api.createProject(editingItem);
+                  try {
+                    if (editingItem.id) {
+                      await api.updateProject(editingItem.id, editingItem);
+                    } else {
+                      await api.createProject(editingItem);
+                    }
+                    setIsModalOpen(false);
+                    loadAllAdminData();
+                  } catch (err: any) {
+                    alert('Erreur: ' + (err.message || 'Échec de la sauvegarde'));
                   }
-                  setIsModalOpen(false);
-                  loadAllAdminData();
                 }}
                 className="space-y-4 font-grotesk max-h-[80vh] overflow-y-auto pr-1"
               >

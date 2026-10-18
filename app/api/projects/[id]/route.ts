@@ -39,8 +39,15 @@ export async function PUT(
       : undefined;
 
   try {
+    const existing = await prisma.project.findFirst({
+      where: { OR: [{ id }, { slug: id }] },
+    });
+    if (!existing) {
+      return NextResponse.json({ success: false, error: 'Projet introuvable' }, { status: 404 });
+    }
+
     const updated = await prisma.project.update({
-      where: { id },
+      where: { id: existing.id },
       data: {
         title: body.title,
         slug: body.slug,
@@ -81,7 +88,14 @@ export async function DELETE(
   const { prisma } = await import('@/lib/prisma');
 
   try {
-    await prisma.project.delete({ where: { id } });
+    const existing = await prisma.project.findFirst({
+      where: { OR: [{ id }, { slug: id }] },
+    });
+    if (!existing) {
+      return NextResponse.json({ success: false, error: 'Projet introuvable' }, { status: 404 });
+    }
+
+    await prisma.project.delete({ where: { id: existing.id } });
     return NextResponse.json({ success: true, message: 'Projet supprimé avec succès' });
   } catch (error: any) {
     if (error.code === 'P2025') {

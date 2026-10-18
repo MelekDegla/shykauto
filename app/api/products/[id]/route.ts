@@ -30,14 +30,16 @@ export async function PUT(
   const body = await req.json();
   const { prisma } = await import('@/lib/prisma');
 
-  const existing = await prisma.product.findUnique({ where: { id } });
+  const existing = await prisma.product.findFirst({
+    where: { OR: [{ id }, { slug: id }] },
+  });
   if (!existing) {
     return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
   }
 
   try {
     const updated = await prisma.product.update({
-      where: { id },
+      where: { id: existing.id },
       data: {
         name: body.name !== undefined ? body.name : existing.name,
         slug: body.slug !== undefined ? body.slug : existing.slug,
@@ -68,11 +70,13 @@ export async function DELETE(
   const { id } = await params;
   const { prisma } = await import('@/lib/prisma');
 
-  const existing = await prisma.product.findUnique({ where: { id } });
+  const existing = await prisma.product.findFirst({
+    where: { OR: [{ id }, { slug: id }] },
+  });
   if (!existing) {
     return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
   }
 
-  await prisma.product.delete({ where: { id } });
+  await prisma.product.delete({ where: { id: existing.id } });
   return NextResponse.json({ success: true, message: 'Product deleted successfully' });
 }

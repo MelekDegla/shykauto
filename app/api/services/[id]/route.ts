@@ -103,7 +103,9 @@ export async function PUT(
 
   try {
     const { prisma } = await import('@/lib/prisma');
-    const existing = await prisma.service.findUnique({ where: { id } });
+    const existing = await prisma.service.findFirst({
+      where: { OR: [{ id }, { slug: id }] },
+    });
     if (!existing) {
       return NextResponse.json(
         { success: false, error: 'Service not found' },
@@ -112,7 +114,7 @@ export async function PUT(
     }
 
     const updated = await prisma.service.update({
-      where: { id },
+      where: { id: existing.id },
       data: {
         title: body.title !== undefined ? body.title : existing.title,
         slug: body.slug !== undefined ? body.slug : existing.slug,
@@ -152,7 +154,9 @@ export async function DELETE(
 
   try {
     const { prisma } = await import('@/lib/prisma');
-    const existing = await prisma.service.findUnique({ where: { id } });
+    const existing = await prisma.service.findFirst({
+      where: { OR: [{ id }, { slug: id }] },
+    });
     if (!existing) {
       return NextResponse.json(
         { success: false, error: 'Service not found' },
@@ -160,7 +164,7 @@ export async function DELETE(
       );
     }
 
-    await prisma.service.delete({ where: { id } });
+    await prisma.service.delete({ where: { id: existing.id } });
 
     return NextResponse.json({
       success: true,
