@@ -17,22 +17,18 @@ export async function GET(req: NextRequest) {
     if (user) {
       return NextResponse.json({ success: true, user });
     }
-  } catch (error: any) {
-    console.warn('DB unavailable in /api/auth/me — using JWT payload fallback');
-  }
 
-  // Fallback: return verified payload from JWT
-  return NextResponse.json({
-    success: true,
-    user: {
-      id: auth.payload.userId,
-      email: auth.payload.email,
-      name: auth.payload.name,
-      role: auth.payload.role,
-      createdAt: new Date().toISOString(),
-    },
-    _fallback: true,
-  });
+    return NextResponse.json(
+      { success: false, error: 'Utilisateur introuvable' },
+      { status: 401 }
+    );
+  } catch (error: any) {
+    console.error('Error in /api/auth/me:', error);
+    return NextResponse.json(
+      { success: false, error: 'Session invalide' },
+      { status: 401 }
+    );
+  }
 }
 
 export async function PUT(req: NextRequest) {

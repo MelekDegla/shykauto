@@ -17,8 +17,8 @@ import {
 
 export const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [loginEmail, setLoginEmail] = useState<string>('admin@shykauto.com');
-  const [loginPassword, setLoginPassword] = useState<string>('Admin@123456');
+  const [loginEmail, setLoginEmail] = useState<string>('');
+  const [loginPassword, setLoginPassword] = useState<string>('');
   const [loginError, setLoginError] = useState<string>('');
   const [loginLoading, setLoginLoading] = useState<boolean>(false);
 
@@ -222,6 +222,8 @@ export const AdminDashboard: React.FC = () => {
               <input
                 type="email"
                 required
+                placeholder="admin@shykauto.com"
+                autoComplete="email"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
                 className="w-full bg-slate-950 border border-slate-700 p-3 rounded text-white text-sm focus:outline-none focus:border-[#cbd5e1]"
@@ -235,6 +237,8 @@ export const AdminDashboard: React.FC = () => {
               <input
                 type="password"
                 required
+                placeholder="••••••••••••"
+                autoComplete="current-password"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
                 className="w-full bg-slate-950 border border-slate-700 p-3 rounded text-white text-sm focus:outline-none focus:border-[#cbd5e1]"
@@ -248,10 +252,6 @@ export const AdminDashboard: React.FC = () => {
             >
               {loginLoading ? 'Connexion en cours...' : 'Se Connecter'}
             </button>
-
-            <p className="text-center font-mono-tech text-[11px] text-slate-500 pt-2">
-              Compte Démo : admin@shykauto.com / Admin@123456
-            </p>
           </form>
         </div>
       </section>

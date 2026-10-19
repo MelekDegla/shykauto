@@ -72,12 +72,8 @@ export const api = {
       console.warn('Unable to reach /api/auth/me:', e);
     }
 
-    const token = typeof window !== 'undefined' ? localStorage.getItem('shyk_admin_token') : null;
-    if (token) {
-      return {
-        success: true,
-        user: { id: 'admin-1', email: 'admin@shykauto.com', name: 'Admin ShykAuto', role: 'ADMIN' },
-      };
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('shyk_admin_token');
     }
     return { success: false, error: 'Non authentifié' };
   },
