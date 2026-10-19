@@ -96,13 +96,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Toggle Buttons */}
         <div className="flex lg:hidden items-center gap-2">
-          <button
-            onClick={() => handleNavClick('admin')}
-            className="p-2 text-slate-300 bg-[#0d1527] border border-[#1e293b] rounded-md"
-            title="Admin Dashboard"
-          >
-            <Lock size={18} />
-          </button>
+
 
           <button
             id="nav-mobile-toggle"
@@ -132,16 +126,7 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             ))}
 
-            <button
-              onClick={() => handleNavClick('admin')}
-              className={`text-left py-2.5 px-3 font-mono-tech text-sm tracking-wider uppercase rounded flex items-center gap-2 ${activeTab === 'admin'
-                ? 'bg-amber-500 text-slate-950 font-bold'
-                : 'bg-[#0d1527] text-slate-300 border border-[#1e293b]'
-                }`}
-            >
-              <Lock size={16} />
-              <span>Panneau Admin (🔐 Admin)</span>
-            </button>
+
           </div>
         </div>
       )}

@@ -149,12 +149,12 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
                       WhatsApp Direct
                     </div>
                     <a
-                      href="https://wa.me/21699321543?text=Bonjour%20ShykAuto,%20je%20souhaite%20une%20information"
+                      href="https://wa.me/21620555593?text=Bonjour%20ShykAuto,%20je%20souhaite%20une%20information"
                       target="_blank"
                       rel="noreferrer"
                       className="font-grotesk font-semibold text-sm text-emerald-600 hover:underline inline-flex items-center gap-1.5"
                     >
-                      <span>Discuter sur WhatsApp (+216 99 321 543)</span>
+                      <span>Discuter sur WhatsApp (+216 20 555 593)</span>
                       <ExternalLink size={13} />
                     </a>
                   </div>
