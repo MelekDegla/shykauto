@@ -48,10 +48,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/',
+    languages: {
+      'fr-TN': '/',
+      'fr': '/',
+    },
   },
   openGraph: {
     type: 'website',
     locale: 'fr_TN',
+    alternateLocale: ['fr_FR'],
     url: SITE_URL,
     siteName: 'SHYK AUTO Tunisie',
     title: 'SHYK AUTO | Climatisation Automobile & Réfrigération Embarquée en Tunisie',
@@ -84,13 +89,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  category: 'Automotive & Industrial Cooling',
+  category: 'Climatisation Automobile & Réfrigération Industrielle',
 };
 
 // JSON-LD Structured Data Schema for Local Business & Organization
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
+  inLanguage: 'fr-TN',
   name: 'SHYK AUTO',
   alternateName: ['DOUCAR', 'SHYK-AUTO Climatisation & Réfrigération Embarquée'],
   description:

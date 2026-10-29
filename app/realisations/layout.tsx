@@ -6,12 +6,17 @@ export const metadata: Metadata = {
     'Découvrez les réalisations de SHYK AUTO en Tunisie : transformations isothermes de fourgons, rénovations complètes de climatisation d\'autocars et équipement de camions frigorifiques.',
   alternates: {
     canonical: '/realisations',
+    languages: {
+      'fr-TN': '/realisations',
+      'fr': '/realisations',
+    },
   },
   openGraph: {
     title: 'Réalisations & Projets Avant/Après | SHYK AUTO Tunisie',
     description:
       'Galerie de nos projets de froid embarqué et climatisation utilitaire en Tunisie : Renault Master, Peugeot Boxer, autocars et camions.',
     url: '/realisations',
+    locale: 'fr_TN',
   },
 };
 

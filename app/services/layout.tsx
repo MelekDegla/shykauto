@@ -6,12 +6,17 @@ export const metadata: Metadata = {
     'Découvrez les services spécialisés SHYK AUTO en Tunisie : climatisation automobile, installation de groupes frigorifiques, cabines isothermes FRC (-20°C / +4°C) et chauffage autonome WEBASTO.',
   alternates: {
     canonical: '/services',
+    languages: {
+      'fr-TN': '/services',
+      'fr': '/services',
+    },
   },
   openGraph: {
     title: 'Services Climatisation & Réfrigération | SHYK AUTO Tunisie',
     description:
       'Installation, entretien et dépannage de systèmes frigorifiques et climatisation automobile en Tunisie depuis 1985.',
     url: '/services',
+    locale: 'fr_TN',
   },
 };
 

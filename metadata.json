@@ -1,6 +1,6 @@
 {
-  "name": "SHYK AUTO - Architects of Cold",
-  "description": "Leading automotive climate & refrigeration engineering platform in Tunisia since 1985.",
+  "name": "SHYK AUTO - Climatisation & Réfrigération Embarquée",
+  "description": "Leader de la climatisation automobile et de la réfrigération embarquée en Tunisie depuis 1985.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
