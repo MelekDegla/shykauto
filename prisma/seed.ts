@@ -6,25 +6,32 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Starting ShykAuto Database Seeding...');
 
-  // 1. Clean existing records
-  await prisma.visitStat.deleteMany();
-  await prisma.message.deleteMany();
-  await prisma.project.deleteMany();
-  await prisma.product.deleteMany();
-  await prisma.service.deleteMany();
-  await prisma.user.deleteMany();
+  // 1. Safety check before wiping
+  if (process.env.ALLOW_DB_RESET === 'true') {
+    console.log('⚠️ ALLOW_DB_RESET=true: Cleaning existing records...');
+    await prisma.visitStat.deleteMany();
+    await prisma.message.deleteMany();
+    await prisma.project.deleteMany();
+    await prisma.product.deleteMany();
+    await prisma.service.deleteMany();
+    await prisma.user.deleteMany();
+  } else {
+    console.log('🔒 Safety mode active: Preserving existing NeonDB records. Will only upsert missing entries.');
+  }
 
-  // 2. Create Admin User
+  // 2. Upsert Admin User (Never duplicates or overwrites existing password)
   const hashedPassword = await bcrypt.hash('Admin@123456', 10);
-  const admin = await prisma.user.create({
-    data: {
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@shykauto.com' },
+    update: {},
+    create: {
       email: 'admin@shykauto.com',
       password: hashedPassword,
       name: 'Admin ShykAuto',
       role: 'ADMIN',
     },
   });
-  console.log('✅ Admin user created:', admin.email);
+  console.log('✅ Admin user verified/ready:', admin.email);
 
   // 3. Create Services
   const servicesData = [

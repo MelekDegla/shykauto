@@ -140,13 +140,8 @@ const products = [
 async function main() {
     console.log('🌱 Starting product database seeding...');
 
-    // Delete obsolete products not in new table
-    const targetSlugs = products.map(p => p.slug);
-    await prisma.product.deleteMany({
-        where: {
-            slug: { notIn: targetSlugs }
-        }
-    });
+    // Safe mode: Do not delete existing products
+    // Only upsert seed products without deleting any custom admin products
 
     for (const item of products) {
         const result = await prisma.product.upsert({
