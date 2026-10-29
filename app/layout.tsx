@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     'sanden',
     'delphi',
     'spal',
+    'elke',
     'chauffage auxiliaire vehicule',
     'recharge clim auto tunisie',
     'compresseur frigorifique',
@@ -100,7 +101,7 @@ const jsonLd = {
   name: 'SHYK AUTO',
   alternateName: ['DOUCAR', 'SHYK-AUTO Climatisation & Réfrigération Embarquée'],
   description:
-    'Distributeur et installateur officiel en deuxième monte des systèmes de climatisation et réfrigération embarquée pour véhicules en Tunisie. Représentant officiel WEBASTO, DIAVIA, SANDEN, DELPHI, SPAL.',
+    'Distributeur et installateur officiel en deuxième monte des systèmes de climatisation et réfrigération embarquée pour véhicules en Tunisie. Représentant officiel WEBASTO, DIAVIA, SANDEN, DELPHI, SPAL, ELKE.',
   url: SITE_URL,
   logo: `${SITE_URL}/images/shyk-auto-hero.jpg`,
   image: `${SITE_URL}/images/shyk-auto-hero.jpg`,

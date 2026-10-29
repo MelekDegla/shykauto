@@ -349,6 +349,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenInquire, onNavigateTab
               </div>
               <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Équipementier</div>
             </div>
+            <div className="text-center">
+              <div className="font-montserrat font-black text-2xl sm:text-3xl text-slate-300 tracking-widest hover:text-white transition-colors">
+                ELKE
+              </div>
+              <div className="font-mono-tech text-[10px] text-slate-500 tracking-widest uppercase mt-1">Équipementier</div>
+            </div>
           </div>
         </div>
       </section>
