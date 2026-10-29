@@ -223,7 +223,7 @@ export const CONTACT_DATA = {
     coordinates: "36.7386° N, 10.2913° E"
   },
   filiale: {
-    name: "Climatisation Auto — Pièces et Accessoires Auto",
+    name: "AUTOCLIMDOUCAR — Pièces et Accessoires Auto",
     role: "Filiale de SHYK AUTO",
     address: "16, Route de Tunis 4011 - H.Sousse",
     phoneFixe: "(+216) 73 361 817",

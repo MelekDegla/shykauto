@@ -137,7 +137,7 @@ const jsonLd = {
   department: [
     {
       '@type': 'AutoRepair',
-      name: 'SHYK AUTO Filiale Sousse',
+      name: 'AUTOCLIMDOUCAR (Filiale Sousse - SHYK AUTO)',
       telephone: '+216 73 361 817',
       address: {
         '@type': 'PostalAddress',

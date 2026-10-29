@@ -206,7 +206,7 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
               </div>
 
               <h3 className="font-montserrat font-extrabold text-2xl sm:text-3xl text-[#0f172a] mb-1">
-                Climatisation Auto
+                AUTOCLIMDOUCAR
               </h3>
               <div className="font-mono-tech text-xs font-bold uppercase text-[#007aff] tracking-wider mb-2">
                 Pièces et Accessoires Auto
@@ -342,10 +342,10 @@ export const ContactSection: React.FC<ContactSectionProps> = () => {
                 </div>
               </div>
 
-              {/* Map embed Sousse (DOUCAR CLIMATISATION AUTO) */}
+              {/* Map embed Sousse (AUTOCLIMDOUCAR) */}
               <div className="mt-6 rounded-sm overflow-hidden border border-[#e2e8f0] shadow-sm h-[240px] bg-[#f4f5f7]">
                 <iframe
-                  title="DOUCAR CLIMATISATION AUTO Sousse"
+                  title="AUTOCLIMDOUCAR Sousse"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.1352726356983!2d10.5884094!3d35.8653741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd346cbd84f477%3A0x8d2332db8b5ca45!2sDOUCAR%20CLIMATISATION%20AUTO!5e0!3m2!1sfr!2stn!4v1700000000000!5m2!1sfr!2stn"
                   width="100%"
                   height="100%"

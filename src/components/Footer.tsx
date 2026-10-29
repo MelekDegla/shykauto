@@ -157,7 +157,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenInquire }) =
                 </div>
 
                 <div className="font-mono-tech text-[11px] text-slate-400 font-bold uppercase pt-2">Filiale (Sousse)</div>
-                <p className="text-slate-200 font-semibold">Climatisation Auto</p>
+                <p className="text-slate-200 font-semibold">AUTOCLIMDOUCAR</p>
                 <p>16, Route de Tunis 4011 - H.Sousse</p>
                 <div className="space-y-0.5 font-mono-tech text-xs pt-0.5">
                   <a href="tel:+21673361817" className="text-[#cbd5e1] font-bold hover:text-white transition-colors block">
